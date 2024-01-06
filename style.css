@@ -32,56 +32,7 @@ body {
     -ms-user-select: none;
     user-select: none;
 
-    top: 50%;
-    left: 50%;
-    z-index: 0;
-    pointer-events: auto;
-
-
-    transition: all 0.15s ease;
-}
-.card:nth-child(1) {
-    transform: translate(-50%, -50%) rotate(-30deg) scale(1);
-    left: 30%;
-    top: 100%;
-}
-.card:nth-child(2) {
-    transform: translate(-50%, -50%) rotate(-15deg) scale(1);
-    left: 40%;
-    top: 95%;
-
-}
-.card:nth-child(3) {
-    transform: translate(-50%, -50%) rotate(0deg) scale(1);
-    left: 50%;
-    top: 90%;
-
-}
-.card:nth-child(4) {
-    transform: translate(-50%, -50%) rotate(15deg) scale(1);
-    left: 60%;
-    top: 95%;
-
-}
-.card:nth-child(5) {
-    transform: translate(-50%, -50%) rotate(30deg) scale(1);
-    left: 70%;
-    top: 100%;
-
-}
-
-.card--dragged {
-    z-index: 1000;
-    pointer-events: none;
-    transition: none;
-}
-.card--dropped {
-    pointer-events: none;
-    transform: translate(-50%, -50%) rotate(0deg) scale(.5) !important;
-    top: 50% !important;
-    left: 50% !important;
-
-    transition: all 0.15s ease;
+    cursor: grab;
 }
 
 .dropoff-location-card {
