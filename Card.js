@@ -2,9 +2,8 @@ class Card {
     constructor(element, index, position) {
         this.element = element;
         this.index = index;
-        this.isDragging = false;
-        this.isDropped = false;
-        this.baseRotation = 0;
+        this.desiredBaseRotation = 0;
+        this.currentRotation = 0;
         this.desiredPosition = {
             x: position.x,
             y: position.y
@@ -14,26 +13,13 @@ class Card {
             y: position.y
         }
         this.cardMoveSpeed = 0.1;
+        this.desiredScale = 1;
+        this.currentScale = 1;
+        this.originalScale = 1;
 
         setInterval(() => {
             this.UpdateMoveToDesiredPosition();
         }, 10);
-    }
-
-    SetDragging (isDragging) {
-        this.isDragging = isDragging;
-    }
-
-    SetDropped (isDropped) {
-        this.isDropped = isDropped;
-    }
-
-    GetIsDragging () {
-        return this.isDragging;
-    }
-
-    GetIsDropped () {
-        return this.isDropped;
     }
 
     SetIndex (index) {
@@ -53,7 +39,14 @@ class Card {
     }
 
     SetBaseRotation (rotation) {
-        this.baseRotation = rotation;
+        this.desiredBaseRotation = rotation;
+    }
+    SetScale (scale) {
+        this.desiredScale = scale;
+    }
+
+    ResetScale () {
+        this.desiredScale = this.originalScale;
     }
 
     SetDesiredPosition (x, y) {
@@ -74,8 +67,28 @@ class Card {
     
         this.element.style.left = `${this.currentPosition.x}px`;
         this.element.style.top = `${this.currentPosition.y}px`;
+
+        this.#UpdateRotation();
+        this.#UpdateScale();
     
-        this.element.style.transform = `translate(-50%, -50%) rotate(${this.baseRotation + (this.currentPosition.x - this.desiredPosition.x) / 10}deg)`;
+        this.element.style.transform = `
+        translate(-50%, -50%) 
+        rotate(${this.currentRotation + (this.currentPosition.x - this.desiredPosition.x) / 10}deg)
+        scale(${this.currentScale})`;
+    }
+
+    #UpdateRotation () {
+        const isAtDesiredRotation = this.currentRotation === this.desiredBaseRotation;
+        if (isAtDesiredRotation) return;
+
+        this.currentRotation += (this.desiredBaseRotation - this.currentRotation) * this.cardMoveSpeed;
+    }
+
+    #UpdateScale () {
+        const isAtDesiredScale = this.currentScale === this.desiredScale;
+        if (isAtDesiredScale) return;
+
+        this.currentScale += (this.desiredScale - this.currentScale) * this.cardMoveSpeed;
     }
 
     

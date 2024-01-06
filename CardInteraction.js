@@ -9,9 +9,10 @@ const allCardObjects = [];
 const cardObjectsInHand = [];
 
 let isHoveringCenterWithCard = false;
-let cardObjectInMiddle = null;
 
-let cardIndexDragged = null;
+const lowestZIndex = 100;
+let cardDragging = null;
+let centerCard = null;
 let mouseX = 0;
 let mouseY = 0;
 
@@ -24,25 +25,39 @@ HandleCardDropoffInCenter();
 
 function HandleCardsDragBehaviour() {
     cardElements.forEach((card, index) => {
-        allCardObjects.push(new Card(card, index, {
+        const cardObject = new Card(card, index, {
             x: card.offsetLeft,
             y: card.offsetTop
-        }));
+        });
+        allCardObjects.push(cardObject);
+
+        AddHoverEvents(cardObject);
     });
 
     SetUpHand();
 
     document.addEventListener('mousemove', (e) => {
-        DragCard(e);
+        DragCard(e, cardDragging);
     });
 
     document.addEventListener('mouseup', (e) => {
-        DropCard();
+        DropCard(cardDragging);
     });
 }
 
 
-
+function AddHoverEvents (cardObject) {
+    cardObject.GetElement().addEventListener('mouseenter', (e) => {
+        if (cardDragging) return;
+        cardObject.SetScale(1.1);
+        cardObject.SetDesiredPosition(cardObject.GetDesiredPosition().x, cardObject.GetDesiredPosition().y - 20);
+    });
+    cardObject.GetElement().addEventListener('mouseleave', (e) => {
+        if (cardDragging) return;
+        cardObject.ResetScale();
+        SetHandPositions();
+    });
+}
 
 
 function SetUpHand () {
@@ -54,8 +69,11 @@ function SetUpHand () {
         allCardObjects[index].SetDesiredPosition(bottomMiddleScreen, window.innerHeight);
 
         card.GetElement().addEventListener('mousedown', (e) => {
-            if (cardIndexDragged !== null) return;
-            cardIndexDragged = index;
+            cardDragging ??= card;
+
+            cardObjectsInHand.splice(card.GetIndex(), 1);
+            console.log(cardObjectsInHand);
+            SetHandPositions();
         });
     });
 
@@ -64,51 +82,82 @@ function SetUpHand () {
 
 function SetHandPositions () {
     const middleScreen = window.innerWidth / 2;
-    const bottomScreen = window.innerHeight;
+    const bottomScreen = window.innerHeight + 100;
 
-    const cardsInHand = cardElements.length;
+    const cardsInHand = cardObjectsInHand.length;
     const distanceBetweenCards = 80;
     const rotationCurve = 20;
-    const centerCard = Math.floor (cardsInHand / 2);
+    const centerCard = (cardsInHand / 2) - .5;
     
     cardObjectsInHand.forEach((card, index) => {
         const rotation = (index - centerCard) * rotationCurve;
         card.SetBaseRotation(rotation);
 
         const cardX = middleScreen - centerCard * distanceBetweenCards + (index * distanceBetweenCards);
-        const cardY = bottomScreen - card.GetElement().offsetHeight / 2 + Math.abs(index - centerCard) * 50;
+        const cardY = bottomScreen - card.GetElement().offsetHeight / 2 + Math.abs(centerCard - index) * 50;
         card.SetDesiredPosition(cardX, cardY);
 
+        card.SetIndex(index);
+        card.GetElement().style.zIndex = lowestZIndex + index;
     });
 }
 
-function DragCard (e) {
+function DragCard (e, card) {
     mouseX = e.clientX;
     mouseY = e.clientY;
 
-    if (cardIndexDragged === null) return;
-    cardObjectsInHand[cardIndexDragged].SetDesiredPosition(mouseX, mouseY);
-    cardObjectsInHand[cardIndexDragged].GetElement().style.pointerEvents = 'none';
+    if (!card) return;
+    card.SetBaseRotation(0);
+    card.SetDesiredPosition(mouseX, mouseY);
+    SetCardDraggingStyle(card);
     ShowDropArrow(true);
 }
 
-function DropCard () {
-    if (cardIndexDragged === null) return;
-    cardObjectsInHand[cardIndexDragged].GetElement().style.pointerEvents = 'auto';
+function SetCardDraggingStyle (card) {
+    card.GetElement().style.pointerEvents = 'none';
+    card.GetElement().classList.add('card-drag-shadow');
+    card.GetElement().style.zIndex = 1000;
+}
+function RemoveCardDraggingStyle (card) {
+    card.GetElement().classList.remove('card-drag-shadow');
+    card.GetElement().style.zIndex = lowestZIndex + card.GetIndex();
+}
+
+function DropCard (card) {
+    if (!card) return;
+    RemoveCardDraggingStyle(card);
 
     if (isHoveringCenterWithCard) {
         DropCardInArea();
+    } else {
+        PutCardBackInHand(cardDragging);
     }
 
-    cardIndexDragged = null;
+    cardDragging = null;
     
     HoverDropArea(false);
     ShowDropArrow(false);
 }
 
+function PutCardBackInHand (card) {
+    cardObjectsInHand.push(card);
+    card.GetElement().style.pointerEvents = 'auto';
+    card.ResetScale();
+    SetHandPositions();
+}
+
 function DropCardInArea () {
-    cardObjectsInHand[cardIndexDragged].SetDesiredPosition(dropoffLocation.offsetLeft, dropoffLocation.offsetTop);
-    cardObjectInMiddle = cardObjectsInHand[cardIndexDragged];
+
+    if (centerCard) {
+        PutCardBackInHand(centerCard);
+    }
+
+    cardDragging.GetElement().style.zIndex = 0;
+    cardDragging.GetElement().style.pointerEvents = 'none';
+    const locationCenter = dropoffLocation.getBoundingClientRect();
+    cardDragging.SetDesiredPosition(locationCenter.x + locationCenter.width / 2, locationCenter.y + locationCenter.height / 2);
+    cardDragging.SetScale(0.5);
+    centerCard = cardDragging;
 }
 
 function ShowDropArrow (show) {
@@ -131,12 +180,12 @@ function HoverDropArea (hover) {
 
 function HandleCardDropoffInCenter () {
     dropoffLocation.addEventListener('mouseenter', (e) => {
-        if (cardIndexDragged === null) return;
+        if (!cardDragging) return;
         HoverDropArea(true);
     });
     
     dropoffLocation.addEventListener('mouseleave', (e) => {
-        if (cardIndexDragged === null) return;
+        if (!cardDragging) return;
         HoverDropArea(false);
     });
 
