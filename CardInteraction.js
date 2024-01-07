@@ -36,7 +36,7 @@ function HandleCardsDragBehaviour() {
         const cardObject = new Card(card, index, {
             x: card.offsetLeft,
             y: card.offsetTop
-        });
+        }, card.dataset.id);
         allCardObjects.push(cardObject);
 
         AddHoverEvents(cardObject);
@@ -86,8 +86,7 @@ function SetUpHand () {
 
 function SetHandPositions () {
     const middleScreen = window.innerWidth / 2;
-    const bottomWithScroll = window.scrollY + window.innerHeight;
-    const bottomScreen = bottomWithScroll + handHeight;
+    const bottomScreen = window.innerHeight + handHeight;
 
     const cardsInHand = cardObjectsInHand.length;
     const distanceBetweenCards = 80;
@@ -108,7 +107,7 @@ function SetHandPositions () {
 
 function DragCard (e, card) {
     const mouseX = e.clientX;
-    const mouseY = e.clientY + window.scrollY;
+    const mouseY = e.clientY;
 
     if (!card) return;
     card.SetBaseRotation(0);

@@ -1,5 +1,5 @@
 class Card {
-    constructor(element, index, position) {
+    constructor(element, index, position, id) {
         this.element = element;
         this.index = index;
         this.desiredBaseRotation = 0;
@@ -16,6 +16,7 @@ class Card {
         this.desiredScale = 1;
         this.currentScale = 1;
         this.originalScale = 1;
+        this.id = null;
 
         this.followElement = null;
 
@@ -71,8 +72,8 @@ class Card {
     UpdateMoveToDesiredPosition () {
         if (this.followElement) {
             const elementRect = this.followElement.getBoundingClientRect();
-            const elementCenterX = elementRect.x + elementRect.width / 2 + window.scrollX;
-            const elementCenterY = elementRect.y + elementRect.height / 2 + window.scrollY;
+            const elementCenterX = elementRect.x + elementRect.width / 2;
+            const elementCenterY = elementRect.y + elementRect.height / 2;
 
             this.SetDesiredPosition(elementCenterX, elementCenterY);
         }

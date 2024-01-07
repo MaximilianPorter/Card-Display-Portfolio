@@ -15,7 +15,7 @@ html {
 
 body {
     font-family: "Source Code Pro", monospace;
-    background-color: red;
+    background-color: black;
     color: #fff;
     font-size: 1.6rem;
 }
@@ -77,8 +77,20 @@ header {
     transform: scaleX(1);
 }
 
+.cards-hand {
+    pointer-events: none;
+    z-index: 12;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
 
 .card {
+    pointer-events: all;
     position: absolute;
     width: 250px;
     
@@ -109,7 +121,7 @@ header {
 }
 
 .overlay-cover {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -122,7 +134,7 @@ header {
 
 .card-container-overlay {
     pointer-events: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
