@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Corner Kingdoms",
+    "type": "game",
+    "id": "corner-kingdoms",
+    "cardImagePath": "/CardImages/card_cornerkingdoms.png"
+  },
+  {
+    "name": "Image to Dots",
+    "type": "webapp",
+    "id": "image-to-dots",
+    "cardImagePath": "/CardImages/card_imagetodots.png"
+  }
+]
