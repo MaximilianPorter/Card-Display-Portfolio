@@ -4,17 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="mediaQueries.css">
     <script type="module" src="/CardInteraction.js"></script>
+    <script type="module" src="/PageControl.js"></script>
 
     <title>Max Porter</title>
 </head>
 <body>
-    <h1>Yo, what's up</h1>
+    <!-- duplicate header -->
 
     <div class="overlay-cover">
+        <header>
+            <h1 class="my-name">Max Porter</h1>
+            <ul class="social-links">
+                <li>
+                    <a href="https://github.com/MaximilianPorter" target="_blank" rel="noopener">
+                        <ion-icon name="logo-github"></ion-icon>
+                        <span>Github</span>
+                    </a>
+                </li>
+                <li>
+                    
+                    <a href="https://www.linkedin.com/in/max-porter-290175196/" target="_blank" rel="noopener"> 
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                        <span>LinkedIn</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:mx.porters@gmail.com" target="_blank" rel="noopener">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <span>Email</span>
+                    </a>
+                </li>
+                <li>
+                    <!-- resume -->
+                    <a href="/UpdatedResume.pdf" target="_blank" rel="noopener">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Resume</span>
+                    </a>
+                </li>
+            </ul>
+        </header>
+    </div>
+    <div class="card-container-overlay">
         <div class="dropoff-location-card">
-            <ion-icon class="dropoff-icon dropoff-icon--hidden" name="arrow-down-outline"></ion-icon>
+            <ion-icon class="dropoff-icon dropoff-icon--hidden" name="add-outline"></ion-icon>
+            <div class="drag-card-info">
+                <p>Drag card here!</p>
+                <ion-icon name="arrow-down-outline"></ion-icon>
+            </div>
         </div>
     </div>
 
@@ -26,6 +69,14 @@
         <img class="card" src="/Cards/Pikes_Jack_white.png" alt="example card">
         <img class="card" src="/Cards/Tiles_6_white.png" alt="example card">
     </div>
+
+    <section class="project-section">
+        <div class="project-section__content">
+            <h2 class="project-section__title">Project Title</h2>
+            <p class="project-section__description">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates impedit commodi laboriosam architecto cum at veritatis reiciendis adipisci iusto repellendus, consequatur quo obcaecati ex nostrum accusamus nobis voluptatibus maiores error dolorum! Tempora voluptates libero laboriosam. Atque assumenda sit aspernatur soluta architecto beatae corporis aut! Quibusdam tempore libero non iste aliquam?
+            </p>
+    </section>
     
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

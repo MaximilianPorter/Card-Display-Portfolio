@@ -17,6 +17,8 @@ class Card {
         this.currentScale = 1;
         this.originalScale = 1;
 
+        this.followElement = null;
+
         setInterval(() => {
             this.UpdateMoveToDesiredPosition();
         }, 10);
@@ -49,6 +51,14 @@ class Card {
         this.desiredScale = this.originalScale;
     }
 
+    FollowElement (element) {
+        this.followElement = element;
+    }
+
+    RemoveFollowElement () {
+        this.followElement = null;
+    }
+
     SetDesiredPosition (x, y) {
         this.desiredPosition.x = x;
         this.desiredPosition.y = y;
@@ -59,6 +69,14 @@ class Card {
     }
 
     UpdateMoveToDesiredPosition () {
+        if (this.followElement) {
+            const elementRect = this.followElement.getBoundingClientRect();
+            const elementCenterX = elementRect.x + elementRect.width / 2 + window.scrollX;
+            const elementCenterY = elementRect.y + elementRect.height / 2 + window.scrollY;
+
+            this.SetDesiredPosition(elementCenterX, elementCenterY);
+        }
+
         const isAtDesiredPosition = this.currentPosition.x === this.desiredPosition.x && this.currentPosition.y === this.desiredPosition.y;
         if (isAtDesiredPosition) return;
 

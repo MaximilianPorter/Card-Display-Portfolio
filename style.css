@@ -1,3 +1,8 @@
+:root {
+    --overlay-color: #212529;
+    --hover-text-color: #339af0;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,12 +14,69 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #212529;
+    font-family: "Source Code Pro", monospace;
+    background-color: red;
     color: #fff;
-
-    overflow: hidden;
+    font-size: 1.6rem;
 }
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+}
+
+.my-name {
+    font-size: 2.4rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40rem;
+    list-style: none;
+    font-size: 1.6rem;
+}
+.social-links a:link,
+.social-links a:visited {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .2rem;
+    color: #fff;
+    text-decoration: none;
+    transform: scale(1);
+    transition: all 0.15s ease;
+}
+.social-links a:hover,
+.social-links a:active {
+    color: inherit;
+    text-decoration: none;
+
+    transform: scale(1.1);
+    color: var(--hover-text-color);
+}
+
+.social-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -.2rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--hover-text-color);
+    transform: scaleX(0);
+    transition: transform 0.15s ease-out;
+}
+
+.social-links a:hover::after {
+    transform: scaleX(1);
+}
+
 
 .card {
     position: absolute;
@@ -48,25 +110,56 @@ body {
 
 .overlay-cover {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: #212529;
+    background-color: var(--overlay-color);
     opacity: 1;
-    border-radius: 20px;
     transition: opacity .3s ease-out;
+    z-index: 10;
+}
 
+.card-container-overlay {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+}
+
+.drag-card-info {
+    position: absolute;
+    top: -5rem;
+    left: 50%;
+    /* background-color: red; */
+    color: rgba(255, 255, 255, 0.3);
+    width: 40rem;
+    transform: translate(-50%, -50%);
+    font-size: 3.6rem;
+    text-align: center;
+    opacity: 1;
+    transition: opacity .1s ease-out;
+}
+
+.drag-card-info--hidden {
+    opacity: 0;
 }
 
 .dropoff-location-card {
+    pointer-events: all;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 200px;
     aspect-ratio: 9/13;
+    
 
     /* dotted border */
-    border: 5px dashed #ffffff10;
+    border: 5px dashed rgba(255, 255, 255, 0.3);
     border-radius: 10px;
 
     transition: all 0.3s ease;
@@ -79,7 +172,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 50px;
+    font-size: 8rem;
     opacity: 1;
 
     transition: all 0.15s ease;
