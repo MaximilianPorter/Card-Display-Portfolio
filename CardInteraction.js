@@ -47,7 +47,6 @@ import activeCardContainer from "./ActiveCardContainer.js";
 
   // used for setting a card as active that the user doens't specifically drag
   function SetActiveCard(card) {
-    activeCardContainer.SetActiveCard(card);
     DragCard_Start(card);
     HoverDropArea(true);
     DropCard(card);

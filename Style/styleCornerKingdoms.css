@@ -1,3 +1,24 @@
+.card-page-section[data-id="corner-kingdoms"] {
+  margin: 0 5rem;
+}
+
+.ck-title-section {
+  background-color: var(--background-color--light);
+  font-size: 5.4rem;
+
+  padding: 2.4rem;
+  border-radius: 40px;
+  margin-bottom: 2.4rem;
+
+  box-shadow: 20px 20px 60px #00000050;
+}
+
+.ck-about {
+  margin: auto;
+  font-size: 2.4rem;
+}
+/*-----------------------------  THUMBNAILS ----------------------------- */
+
 .ck-thumbnails {
   display: flex;
   justify-content: center;
