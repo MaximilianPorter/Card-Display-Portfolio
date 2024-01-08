@@ -1,0 +1,15 @@
+@media screen and (width < 600px){
+
+    header {
+        flex-direction: column;
+    }
+
+    .card-container-overlay {
+        display: none;
+    }
+
+    .cards-hand {
+        display: none;
+    }
+
+}

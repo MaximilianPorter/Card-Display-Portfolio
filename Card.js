@@ -16,13 +16,17 @@ class Card {
     this.desiredScale = 1;
     this.currentScale = 1;
     this.originalScale = 1;
-    this.id = null;
+    this.id = id;
 
     this.followElement = null;
 
     setInterval(() => {
       this.UpdateMoveToDesiredPosition();
     }, 10);
+  }
+
+  GetId() {
+    return this.id;
   }
 
   SetIndex(index) {

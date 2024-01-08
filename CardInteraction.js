@@ -14,27 +14,44 @@ import activeCardContainer from "./ActiveCardContainer.js";
   const dropoffLocationElement = document.querySelector(".dropoff-location-card");
   const dropoffIconElement = document.querySelector(".dropoff-icon");
 
+  const cardDraggingHelpText = document.querySelector(".card-dragging-help-text");
+
   const allCardObjects = [];
   const cardObjectsInHand = [];
 
-  const lowestZIndex = 100; // im adjusting z index manually because I procedurally stack the cards in the hand
-  const handHeight = 50; // how high the hand is from the bottom of the screen
-  const handRotationCurve = 20; // how much each card is rotated from the center of the hand
-  const cardOffsetHeight = 50; // how much each card is offset from the center of the hand
-  const cardHoverOffsetHeight = 100; // how much each card is raised when hovered
-  const distanceBetweenCards = 80; // how far apart each card is in the hand
+  const positionSettingsNormal = {
+    handHeight: 50, // how high the hand is from the bottom of the screen
+    handRotationCurve: 20, // how much each card is rotated from the center of the hand
+    cardOffsetHeight: 50, // how much each card is offset from the center of the hand
+    cardHoverOffsetHeight: 100, // how much each card is raised when hovered
+    distanceBetweenCards: 80, // how far apart each card is in the hand
+  };
 
+  const positionSettingsWhenContainerActive = {
+    handHeight: 200,
+    handRotationCurve: 10,
+    cardOffsetHeight: 50,
+    cardHoverOffsetHeight: 100,
+    distanceBetweenCards: 40,
+  };
+
+  function SetPositionSettings(settings) {
+    if (settings === currentPositionSettings) return;
+    currentPositionSettings = settings;
+    SetHandPositions();
+  }
+
+  let currentPositionSettings = positionSettingsNormal;
+  const lowestZIndex = 100; // im adjusting z index manually because I procedurally stack the cards in the hand
+
+  let hoverCardHelpTimeout = null;
   let isHoveringCenterWithCard = false;
   let cardDragging = null;
+  let cardHovering = null;
   let centerCard = null;
 
   // on window resize, reset card positions
   window.addEventListener("resize", () => {
-    SetHandPositions();
-  });
-
-  // listen for scroll
-  window.addEventListener("scroll", () => {
     SetHandPositions();
   });
 
@@ -49,6 +66,7 @@ import activeCardContainer from "./ActiveCardContainer.js";
 
       const webapp = `<ion-icon class="card-icon" name="laptop-outline"></ion-icon>`;
       const gameIcon = `<ion-icon class="card-icon" name="game-controller-outline"></ion-icon>`;
+      const infoIcon = `<ion-icon class="card-icon" name="information-circle-outline"></ion-icon>`;
 
       let typeText = ``;
       let iconMarkup = ``;
@@ -58,6 +76,9 @@ import activeCardContainer from "./ActiveCardContainer.js";
       } else if (cardData.type === "game") {
         iconMarkup = gameIcon;
         typeText = `Game`;
+      } else if (cardData.type === "info") {
+        iconMarkup = infoIcon;
+        typeText = `Info`;
       }
 
       const cardMarkup = `
@@ -72,6 +93,21 @@ import activeCardContainer from "./ActiveCardContainer.js";
 
       handElement.insertAdjacentHTML("beforeend", cardMarkup);
     });
+  }
+
+  function DetermineHandPositionSettings(e) {
+    const distanceFromBottom = window.innerHeight - e.clientY;
+    if (cardDragging) {
+      SetPositionSettings(positionSettingsWhenContainerActive);
+      return;
+    } else if (!centerCard) {
+      SetPositionSettings(positionSettingsNormal);
+      return;
+    } else if (distanceFromBottom < 200) {
+      SetPositionSettings(positionSettingsNormal);
+    } else if (distanceFromBottom >= 200 && !cardHovering) {
+      SetPositionSettings(positionSettingsWhenContainerActive);
+    }
   }
 
   function HandleCardsDragBehaviour() {
@@ -94,6 +130,8 @@ import activeCardContainer from "./ActiveCardContainer.js";
 
     document.addEventListener("mousemove", (e) => {
       DragCard(e, cardDragging);
+
+      DetermineHandPositionSettings(e);
     });
 
     document.addEventListener("mouseup", (e) => {
@@ -104,19 +142,39 @@ import activeCardContainer from "./ActiveCardContainer.js";
   function AddCardHoverEvents(cardObject) {
     cardObject.GetElement().addEventListener("mouseenter", (e) => {
       if (cardDragging) return;
+      cardHovering = cardObject;
       cardObject.SetScale(1.1);
+      cardObject.GetElement().classList.add("card--hover");
+
+      hoverCardHelpTimeout = setTimeout(() => {
+        ActivateHelpDragText(cardObject);
+      }, 1000);
 
       // move card up based on it's own rotation
       const cardRotationRadians = cardObject.GetBaseRotation() * (Math.PI / 180);
-      const newX = cardObject.GetDesiredPosition().x + Math.sin(cardRotationRadians) * cardHoverOffsetHeight;
-      const newY = cardObject.GetDesiredPosition().y - Math.cos(cardRotationRadians) * cardHoverOffsetHeight;
+      const newX = cardObject.GetDesiredPosition().x + Math.sin(cardRotationRadians) * currentPositionSettings.cardHoverOffsetHeight;
+      const newY = cardObject.GetDesiredPosition().y - Math.cos(cardRotationRadians) * currentPositionSettings.cardHoverOffsetHeight;
       cardObject.SetDesiredPosition(newX, newY);
     });
     cardObject.GetElement().addEventListener("mouseleave", (e) => {
       if (cardDragging) return;
+      cardHovering = null;
+      clearTimeout(hoverCardHelpTimeout);
+      ResetHelpDragText();
+
+      cardObject.GetElement().classList.remove("card--hover");
       cardObject.ResetScale();
       SetHandPositions();
     });
+  }
+  function ActivateHelpDragText(cardObject) {
+    cardObject.GetElement().appendChild(cardDraggingHelpText);
+    cardDraggingHelpText.classList.remove("card-dragging-help-text--hidden");
+  }
+
+  function ResetHelpDragText() {
+    document.body.appendChild(cardDraggingHelpText);
+    cardDraggingHelpText.classList.add("card-dragging-help-text--hidden");
   }
 
   function SetUpHand() {
@@ -125,29 +183,42 @@ import activeCardContainer from "./ActiveCardContainer.js";
       cardObjectsInHand.push(card);
 
       card.GetElement().addEventListener("mousedown", (e) => {
-        cardDragging ??= card;
-
-        cardObjectsInHand.splice(card.GetIndex(), 1);
-        SetHandPositions();
+        StartDraggingCard(card);
       });
     });
-
     SetHandPositions();
+
+    SetCorrectCardFromUrl();
+  }
+
+  function SetCorrectCardFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const cardId = urlParams.get("card");
+    if (cardId) {
+      const cardObject = allCardObjects.find((card) => card.GetId() === cardId);
+      if (cardObject) {
+        activeCardContainer.SetActiveCard(cardObject);
+
+        StartDraggingCard(cardObject);
+        HoverDropArea(true);
+        DropCard(cardObject);
+      }
+    }
   }
 
   function SetHandPositions() {
     const middleScreen = window.innerWidth / 2;
-    const bottomScreen = window.innerHeight + handHeight;
+    const bottomScreen = window.innerHeight + currentPositionSettings.handHeight;
 
     const cardsInHand = cardObjectsInHand.length;
     const centerCard = cardsInHand / 2 - 0.5;
 
     cardObjectsInHand.forEach((card, index) => {
-      const rotation = (index - centerCard) * handRotationCurve;
+      const rotation = (index - centerCard) * currentPositionSettings.handRotationCurve;
       card.SetBaseRotation(rotation);
 
-      const cardX = middleScreen - centerCard * distanceBetweenCards + index * distanceBetweenCards;
-      const cardY = bottomScreen - card.GetElement().offsetHeight / 2 + Math.abs(centerCard - index) * cardOffsetHeight;
+      const cardX = middleScreen - centerCard * currentPositionSettings.distanceBetweenCards + index * currentPositionSettings.distanceBetweenCards;
+      const cardY = bottomScreen - card.GetElement().offsetHeight / 2 + Math.abs(centerCard - index) * currentPositionSettings.cardOffsetHeight;
       card.SetDesiredPosition(cardX, cardY);
 
       card.SetIndex(index);
@@ -155,15 +226,28 @@ import activeCardContainer from "./ActiveCardContainer.js";
     });
   }
 
-  function DragCard(e, card) {
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-
-    if (!card) return;
+  function StartDraggingCard(card) {
+    cardDragging ??= card;
     card.SetBaseRotation(0);
-    card.SetDesiredPosition(mouseX, mouseY);
     SetCardDraggingStyle(card);
     ShowDropIcon(true);
+
+    cardObjectsInHand.splice(card.GetIndex(), 1);
+    SetHandPositions();
+    console.log(cardObjectsInHand);
+  }
+
+  function DragCard(e, card) {
+    const mouseX = e?.clientX;
+    const mouseY = e?.clientY;
+
+    if (!card) return;
+    clearTimeout(hoverCardHelpTimeout);
+    ResetHelpDragText();
+    if (dropoffLocationElement.classList.contains("dropoff-location-card--moved")) {
+      dropoffLocationElement.classList.remove("dropoff-location-card--moved-offscreen");
+    }
+    card.SetDesiredPosition(mouseX, mouseY);
   }
 
   function SetCardDraggingStyle(card) {
@@ -192,7 +276,13 @@ import activeCardContainer from "./ActiveCardContainer.js";
   }
 
   function PutCardBackInHand(card) {
+    if (dropoffLocationElement.classList.contains("dropoff-location-card--moved")) {
+      setTimeout(() => {
+        dropoffLocationElement.classList.add("dropoff-location-card--moved-offscreen");
+      }, 600);
+    }
     card.GetElement().classList.remove("card-in-container");
+    card.GetElement().classList.remove("card--hover");
     card.RemoveFollowElement();
     cardObjectsInHand.push(card);
     card.ResetScale();
@@ -204,13 +294,13 @@ import activeCardContainer from "./ActiveCardContainer.js";
       PutCardBackInHand(centerCard);
     }
 
+    activeCardContainer.SetActiveCard(cardDragging);
+
     cardDragging.GetElement().style.zIndex = lowestZIndex;
     cardDragging.GetElement().classList.add("card-in-container");
     cardDragging.FollowElement(dropoffLocationElement);
     cardDragging.SetScale(0.5);
     centerCard = cardDragging;
-
-    activeCardContainer.SetActiveCard(cardDragging);
   }
 
   function ShowDropIcon(show) {
