@@ -25,56 +25,25 @@ class Card {
     }, 10);
   }
 
-  GetId() {
-    return this.id;
-  }
+  GetId = () => this.id;
 
-  SetIndex(index) {
-    this.index = index;
-  }
+  SetIndex = (index) => (this.index = index);
+  GetIndex = () => this.index;
 
-  GetIndex() {
-    return this.index;
-  }
+  SetElement = (element) => (this.element = element);
+  GetElement = () => this.element;
 
-  SetElement(element) {
-    this.element = element;
-  }
+  SetBaseRotation = (rotation) => (this.desiredBaseRotation = rotation);
+  GetBaseRotation = () => this.desiredBaseRotation;
 
-  GetElement() {
-    return this.element;
-  }
+  SetScale = (scale) => (this.desiredScale = scale);
+  ResetScale = () => (this.desiredScale = this.originalScale);
 
-  SetBaseRotation(rotation) {
-    this.desiredBaseRotation = rotation;
-  }
-  GetBaseRotation() {
-    return this.desiredBaseRotation;
-  }
-  SetScale(scale) {
-    this.desiredScale = scale;
-  }
+  FollowElement = (element) => (this.followElement = element);
+  RemoveFollowElement = () => (this.followElement = null);
 
-  ResetScale() {
-    this.desiredScale = this.originalScale;
-  }
-
-  FollowElement(element) {
-    this.followElement = element;
-  }
-
-  RemoveFollowElement() {
-    this.followElement = null;
-  }
-
-  SetDesiredPosition(x, y) {
-    this.desiredPosition.x = x;
-    this.desiredPosition.y = y;
-  }
-
-  GetDesiredPosition() {
-    return this.desiredPosition;
-  }
+  SetDesiredPosition = (x, y) => (this.desiredPosition = { x, y });
+  GetDesiredPosition = () => this.desiredPosition;
 
   UpdateMoveToDesiredPosition() {
     if (this.followElement) {

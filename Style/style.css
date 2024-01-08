@@ -138,6 +138,7 @@ header {
   transition: box-shadow 0.25s ease;
 }
 
+/* Card dark until highlighted */
 .card::after {
   content: "";
   position: absolute;
@@ -222,6 +223,13 @@ header {
   width: 100%;
   height: 100%;
   z-index: 11;
+
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.card-container-overlay:has(> .dropoff-location-card--moved):not(:has(> .dropoff-location-card--moved-offscreen)) {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .drag-card-info {
@@ -263,17 +271,40 @@ header {
   width: 380px;
 }
 
+.dropoff-location-card::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  transition: all 0.4s ease;
+}
+.dropoff-location-card--hover::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  filter: blur(100px);
+}
+
 .dropoff-location-card--moved {
   position: fixed;
   top: 1rem;
-  left: 1rem;
-  transform: translate(0, 0);
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 .dropoff-location-card--moved-offscreen {
   position: fixed;
-  top: 1rem;
-  left: -100%;
-  transform: translate(0, 0);
+  top: -100%;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .dropoff-icon {
