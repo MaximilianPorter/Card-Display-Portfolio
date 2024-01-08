@@ -1,15 +1,28 @@
-@media screen and (width < 600px){
+@media screen and (width < 600px) {
+  header {
+    flex-direction: column;
+  }
 
-    header {
-        flex-direction: column;
-    }
+  .card-container-overlay {
+    display: none;
+  }
 
-    .card-container-overlay {
-        display: none;
-    }
+  .cards-hand {
+    display: none;
+  }
 
-    .cards-hand {
-        display: none;
-    }
+  .my-name {
+    font-size: 3.6rem;
+  }
 
+  /* Corner Kingdoms */
+  .ck-thumbnails {
+    flex-direction: column;
+    height: auto;
+  }
+  .ck-thumbnails a:link,
+  .ck-thumbnails a:visited {
+    height: auto;
+    width: 100%;
+  }
 }

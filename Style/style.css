@@ -272,7 +272,7 @@ header {
 .dropoff-location-card--moved-offscreen {
   position: fixed;
   top: 1rem;
-  left: -20%;
+  left: -100%;
   transform: translate(0, 0);
 }
 
@@ -326,6 +326,7 @@ header {
 }
 .overlay-cover--hidden {
   opacity: 0;
+  pointer-events: none;
 }
 
 /* ----------------------- CARD PAGE SECTIONS ----------------------- */
