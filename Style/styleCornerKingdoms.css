@@ -1,5 +1,9 @@
 .card-page-section[data-id="corner-kingdoms"] {
   margin: 0 5rem;
+  font-size: 2.4rem;
+}
+.card-page-section h3 {
+  margin-top: 4rem;
 }
 
 .ck-title-section {
@@ -15,10 +19,42 @@
 
 .ck-about {
   margin: auto;
-  font-size: 2.4rem;
+  margin-bottom: 5rem;
+}
+.ck-features-list {
+  margin-bottom: 5rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 2rem;
+  border-radius: 50px;
+}
+.ck-features-list ul li {
+  margin-left: 5rem;
+}
+.ck-features-list-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.ck-features-screenshot {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 40px;
 }
 /*-----------------------------  THUMBNAILS ----------------------------- */
-
+.ck-thumbnail-precursor {
+  margin: auto;
+  text-align: center;
+  font-size: 2rem;
+  font-style: italic;
+}
 .ck-thumbnails {
   display: flex;
   justify-content: center;
@@ -28,7 +64,7 @@
   width: 90%;
   height: 20rem;
 
-  margin: auto;
+  margin: 2rem auto;
 }
 
 .ck-thumbnails a:link,
