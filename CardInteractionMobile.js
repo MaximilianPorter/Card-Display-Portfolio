@@ -40,7 +40,7 @@
         data-type="${typeText}"
         >
           <div class="mobile-card-details">
-          ${iconMarkup}
+            ${iconMarkup}
             <p class="mobile-card-name">${cardName}</p>
           </div>
           <img src="${cardImagePath}" alt="example card" />
