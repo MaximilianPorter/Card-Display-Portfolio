@@ -108,7 +108,44 @@ header {
     transform: scaleX(1);
 }
 
+.desktop-tip {
+    display: none;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    margin: 2rem;
+    padding: 0.5rem 1rem;
+}
+
 /*----------------------- CARD STUFF ----------------------- */
+
+.mobile-cards {
+    width: 90%;
+    margin: 18rem auto;
+
+    gap: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mobile-card {
+    position: relative;
+    pointer-events: all;
+    width: 100%;
+    height: 40rem;
+
+    background-color: var(--card-background-color);
+
+    border-radius: 20px;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+    color: var(--text-light);
+
+    /* overflow: hidden; */
+
+    transition: box-shadow 0.25s ease;
+}
 
 .cards-hand {
     pointer-events: none;
@@ -189,7 +226,8 @@ header {
     pointer-events: none;
 }
 
-.card img {
+.card img,
+.mobile-card img {
     width: calc(100% - 2rem);
     height: calc(100% - 6rem);
     object-fit: cover;
@@ -367,6 +405,8 @@ header {
     width: 100%;
     height: 100%;
     background-color: var(--overlay-color);
+
+    padding-top: 8rem;
 
     background-image: radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
     background-size: 30px 30px;

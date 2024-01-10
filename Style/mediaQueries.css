@@ -68,6 +68,13 @@
         margin-top: 8rem;
     }
 
+    .desktop-tip {
+        display: block;
+    }
+    .start-page-cover {
+        display: none;
+    }
+
     .card-container-overlay {
         display: none;
     }
