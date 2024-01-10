@@ -5,6 +5,8 @@ const dropoffLocationElement = document.querySelector(".dropoff-location-card");
 const overlayCoverElement = document.querySelector(".overlay-cover");
 const dragCardInfoElement = document.querySelector(".drag-card-info");
 const startPageCover = document.querySelector(".start-page-cover");
+const mobileCardsContainerElement = document.querySelector(".mobile-cards");
+const myNameHeaderElement = document.querySelector(".my-name");
 
 const cardPageSections = document.querySelectorAll(".card-page-section");
 
@@ -24,6 +26,8 @@ document.addEventListener("updatedCard", (e) => {
 
     console.log(activeCard);
     dragCardInfoElement.classList.add("drag-card-info--hidden");
+    const newNameText = `HOME`;
+    myNameHeaderElement.innerHTML = `<a href="/#">${newNameText}</a>`;
 
     MoveCardContainer();
     ActivateOverlay();
@@ -32,6 +36,7 @@ document.addEventListener("updatedCard", (e) => {
         HideAllPages();
         ShowPage(activeCard.GetId());
         startPageCover.classList.add("hidden");
+        mobileCardsContainerElement.classList.add("hidden");
     }, 500);
     setTimeout(() => {
         RemoveOverlay();

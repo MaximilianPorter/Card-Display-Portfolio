@@ -38,7 +38,6 @@
         class="mobile-card"
         data-id="${cardId}"
         data-type="${typeText}"
-        onclick = "window.location.href = './?card=${cardId}'"
         >
           <div class="card-details">
           ${iconMarkup}
@@ -50,5 +49,15 @@
 
             mobileCards.insertAdjacentHTML("beforeend", cardMarkup);
         });
+
+        const mobileCardElements = document.querySelectorAll(".mobile-card");
+        mobileCardElements.forEach((cardElement) => {
+            cardElement.addEventListener("click", MobileCardClick);
+        });
+    }
+
+    function MobileCardClick() {
+        const cardId = this.dataset.id;
+        window.location.href = `./?card=${cardId}`;
     }
 })();

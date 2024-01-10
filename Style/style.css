@@ -33,6 +33,9 @@ body {
     /* background-image: radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
   background-size: 30px 30px; */
 }
+.mobile-site {
+    display: none;
+}
 
 /*----------------------- HEADER AREA ----------------------- */
 
@@ -121,7 +124,7 @@ header {
 
 .mobile-cards {
     width: 90%;
-    margin: 18rem auto;
+    margin: auto;
 
     gap: 2rem;
 
@@ -134,7 +137,12 @@ header {
     position: relative;
     pointer-events: all;
     width: 100%;
-    height: 40rem;
+    height: 12rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: none;
 
     background-color: var(--card-background-color);
 
@@ -142,13 +150,34 @@ header {
     box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
     color: var(--text-light);
 
-    /* overflow: hidden; */
+    overflow: hidden;
 
     transition: box-shadow 0.25s ease;
+}
+.mobile-card img {
+    height: 120%;
+    width: 12rem;
+    object-fit: cover;
+    pointer-events: none;
+    touch-action: none;
+    /* border-radius: 20px; */
+    margin-left: auto;
+    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.3);
+}
+.mobile-card .card-details {
+    height: 100% !important;
+    flex-direction: column !important;
+    width: calc(100% - 12rem);
+}
+.mobile-card .card-name {
+    margin: 1rem;
+    margin-right: auto;
+    margin-top: 5rem;
 }
 
 .cards-hand {
     pointer-events: none;
+    touch-action: none;
     z-index: 12;
     position: fixed;
     top: 50%;
@@ -219,19 +248,21 @@ header {
 .card-dragging {
     box-shadow: 15px 40px 5px rgba(0, 0, 0, 0.2);
     pointer-events: none;
+    touch-action: none;
 }
 
 .card-in-container {
     box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
     pointer-events: none;
+    touch-action: none;
 }
 
-.card img,
-.mobile-card img {
+.card img {
     width: calc(100% - 2rem);
     height: calc(100% - 6rem);
     object-fit: cover;
     pointer-events: none;
+    touch-action: none;
     border-radius: 20px;
     /* border-top-right-radius: 0px;
   border-top-left-radius: 0px; */
@@ -416,6 +447,7 @@ header {
 .overlay-cover {
     --cover-edge-width: 40px;
     pointer-events: none;
+    touch-action: none;
     position: fixed;
     top: 0;
     left: 0;

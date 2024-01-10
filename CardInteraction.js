@@ -134,18 +134,24 @@ import activeCardContainer from "./ActiveCardContainer.js";
     //#region EVENT HANDLERS -----------------------------------------------------
     function CreateEvents_CardDragBehaviour() {
         allCardObjects.forEach((card) => {
-            card.GetElement().addEventListener("mousedown", (e) => {
-                DragCard_Start(card);
+            ["mousedown", "touchstart"].forEach((eventName) => {
+                card.GetElement().addEventListener(eventName, (e) => {
+                    DragCard_Start(card);
+                });
             });
         });
-        document.addEventListener("mousemove", (e) => {
-            DragCard_Continuous(e, cardDragging);
+        ["mousemove", "touchmove"].forEach((eventName) => {
+            document.addEventListener(eventName, (e) => {
+                DragCard_Continuous(e, cardDragging);
 
-            AdjustHandPositionFromMouse(e);
+                AdjustHandPositionFromMouse(e);
+            });
         });
 
-        document.addEventListener("mouseup", (e) => {
-            DropCard(cardDragging);
+        ["mouseup", "touchend"].forEach((eventName) => {
+            document.addEventListener(eventName, (e) => {
+                DropCard(cardDragging);
+            });
         });
     }
     function CreateEvents_CardHoverBehaviour(cardObject) {
@@ -179,11 +185,27 @@ import activeCardContainer from "./ActiveCardContainer.js";
             cardObject.ResetScale();
             UpdateCardPositionsInHand();
         });
+
+        cardObject.GetElement().addEventListener("touchmove", (e) => {
+            if (cardObject !== cardDragging) return;
+
+            const touchX = e.touches[0].clientX;
+            const touchY = e.touches[0].clientY;
+            const dropoffLocationRect = dropoffLocationElement.getBoundingClientRect();
+            const touchHoveringCenter =
+                touchX > dropoffLocationRect.left &&
+                touchX < dropoffLocationRect.right &&
+                touchY > dropoffLocationRect.top &&
+                touchY < dropoffLocationRect.bottom;
+            HoverDropArea(touchHoveringCenter);
+        });
     }
     function CreateEvents_DropAreaHoverBehaviour() {
-        dropoffLocationElement.addEventListener("mouseenter", (e) => {
-            if (!cardDragging) return;
-            HoverDropArea(true);
+        ["mouseenter", "touchenter"].forEach((eventName) => {
+            dropoffLocationElement.addEventListener(eventName, (e) => {
+                if (!cardDragging) return;
+                HoverDropArea(true);
+            });
         });
 
         dropoffLocationElement.addEventListener("mouseleave", (e) => {
@@ -198,7 +220,9 @@ import activeCardContainer from "./ActiveCardContainer.js";
 
     //#region HAND POSITIONING -----------------------------------------------------
     function AdjustHandPositionFromMouse(e) {
-        const distanceFromBottom = window.innerHeight - e.clientY;
+        const isUsingTouch = e.touches?.length > 0;
+        const event = isUsingTouch ? e.touches[0] : e;
+        const distanceFromBottom = window.innerHeight - event.clientY;
         if (cardDragging) {
             SetHandPositionSettings(positionSettingsWhenContainerActive);
             return;
@@ -256,8 +280,10 @@ import activeCardContainer from "./ActiveCardContainer.js";
         UpdateCardPositionsInHand();
     }
     function DragCard_Continuous(e, card) {
-        const mouseX = e?.clientX;
-        const mouseY = e?.clientY;
+        const isUsingTouch = e.touches?.length > 0;
+        const event = isUsingTouch ? e.touches[0] : e;
+        const mouseX = event.clientX ?? event.clientX;
+        const mouseY = event.clientY ?? event.clientY;
 
         if (!card) return;
         clearTimeout(hoverCardHelpTimeout);
