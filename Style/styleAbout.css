@@ -1,0 +1,11 @@
+.card-page-section[data-id="about"] {
+    margin: auto;
+    width: 80%;
+}
+
+.about-title {
+    font-size: 8.4rem;
+    font-weight: 700;
+
+    text-align: center;
+}

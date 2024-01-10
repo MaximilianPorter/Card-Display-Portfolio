@@ -1,4 +1,5 @@
 import activeCardContainer from "./ActiveCardContainer.js";
+import TimeSinceDate from "./DateTimer.js";
 
 const dropoffLocationElement = document.querySelector(".dropoff-location-card");
 const overlayCoverElement = document.querySelector(".overlay-cover");
@@ -7,6 +8,12 @@ const startPageCover = document.querySelector(".start-page-cover");
 
 const cardPageSections = document.querySelectorAll(".card-page-section");
 
+const age = document.querySelector(".age");
+const ageTimer = document.querySelector(".age-timer");
+setInterval(() => {
+    if (ageTimer) ageTimer.innerHTML = TimeSinceDate(new Date("2016-05-30T00:00:00"), 9);
+    if (age) age.innerHTML = TimeSinceDate(new Date("2000-05-30T00:00:00"));
+}, 10);
 // listen for updated card event
 document.addEventListener("updatedCard", (e) => {
     const activeCard = activeCardContainer.GetActiveCard();

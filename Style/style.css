@@ -384,9 +384,11 @@ header {
     height: 100%;
     background-color: var(--overlay-color);
     z-index: 10;
+    display: none;
 }
 .overlay-cover--active {
     animation: slide-in 1s cubic-bezier(0.47, 0, 0.745, 0.715);
+    display: block !important;
 }
 
 .overlay-cover::after {
