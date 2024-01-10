@@ -39,9 +39,9 @@
         data-id="${cardId}"
         data-type="${typeText}"
         >
-          <div class="card-details">
+          <div class="mobile-card-details">
           ${iconMarkup}
-            <p class="card-name">${cardName}</p>
+            <p class="mobile-card-name">${cardName}</p>
           </div>
           <img src="${cardImagePath}" alt="example card" />
         </button>

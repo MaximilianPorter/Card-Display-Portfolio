@@ -73,7 +73,7 @@ import activeCardContainer from "./ActiveCardContainer.js";
             let iconMarkup = ``;
             if (cardData.type === "webapp") {
                 iconMarkup = webapp;
-                typeText = `Web App`;
+                typeText = `Web Application`;
             } else if (cardData.type === "game") {
                 iconMarkup = gameIcon;
                 typeText = `Game`;
@@ -84,11 +84,12 @@ import activeCardContainer from "./ActiveCardContainer.js";
 
             const cardMarkup = `
         <div class="card" data-id="${cardId}" data-type="${typeText}">
-          <div class="card-details">
-          ${iconMarkup}
-            <p class="card-name">${cardName}</p>
-          </div>
-          <img src="${cardImagePath}" alt="example card" />
+            <div class="card-details">
+                ${iconMarkup}
+                <p class="card-name">${cardName}</p>
+            </div>
+            <img src="${cardImagePath}" alt="example card" />
+            <p class="card-type">${typeText}</p>
         </div>
         `;
 
