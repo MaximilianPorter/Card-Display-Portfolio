@@ -1,383 +1,426 @@
 :root {
-  --hover-text-color: #339af0;
-  --overlay-color: #0b090a;
-  --background-color: #0b090a;
-  --background-color--light: #1f1f1f;
-  --card-background-color: #0582ca;
-  --highlight-word: #ffb703;
+    --hover-text-color: #339af0;
+    --overlay-color: #0b090a;
+    --background-color: #0b090a;
+    --background-color--light: #1f1f1f;
+    --card-background-color: #252525;
+    --highlight-word: #ffb703;
 
-  --text-dark: #0b090a;
-  --text-light: #f7f7f7;
+    --text-dark: #0b090a;
+    --text-light: #f7f7f7;
 }
 
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 body {
-  font-family: "Source Code Pro", monospace;
-  background-color: var(--background-color);
-  color: #fff;
-  font-size: 1.6rem;
+    font-family: "Source Code Pro", monospace;
+    background-color: var(--background-color);
+    color: #fff;
+    font-size: 1.6rem;
 
-  /* background-image: radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+    margin-top: 5rem;
+
+    /* background-image: radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
   background-size: 30px 30px; */
 }
 
 /*----------------------- HEADER AREA ----------------------- */
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 11;
 }
 
 .my-name {
-  font-size: 2.4rem;
+    font-size: 2.4rem;
 }
 .my-name a:link,
 .my-name a:visited {
-  color: #fff;
-  text-decoration: none;
-  transition: all 0.15s ease;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.15s ease;
 }
 .my-name a:hover,
 .my-name a:active {
-  color: var(--hover-text-color);
+    color: var(--hover-text-color);
 }
 
 .social-links {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 40rem;
-  list-style: none;
-  font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40rem;
+    list-style: none;
+    font-size: 1.6rem;
 }
 .social-links a:link,
 .social-links a:visited {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.2rem;
-  color: #fff;
-  text-decoration: none;
-  transform: scale(1);
-  transition: all 0.15s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    color: #fff;
+    text-decoration: none;
+    transform: scale(1);
+    transition: all 0.15s ease;
 }
 .social-links a:hover,
 .social-links a:active {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 
-  transform: scale(1.1);
-  color: var(--hover-text-color);
+    transform: scale(1.1);
+    color: var(--hover-text-color);
 }
 
 .social-links a::after {
-  content: "";
-  position: absolute;
-  bottom: -0.2rem;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--hover-text-color);
-  transform: scaleX(0);
-  transition: transform 0.15s ease-out;
+    content: "";
+    position: absolute;
+    bottom: -0.2rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--hover-text-color);
+    transform: scaleX(0);
+    transition: transform 0.15s ease-out;
 }
 
 .social-links a:hover::after {
-  transform: scaleX(1);
+    transform: scaleX(1);
 }
 
 /*----------------------- CARD STUFF ----------------------- */
 
 .cards-hand {
-  pointer-events: none;
-  z-index: 12;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+    pointer-events: none;
+    z-index: 12;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .card {
-  pointer-events: all;
-  position: absolute;
-  width: 250px;
-  /* aspect-ratio: 9/13; */
-  height: 350px;
+    pointer-events: all;
+    position: absolute;
+    width: 250px;
+    /* aspect-ratio: 9/13; */
+    height: 350px;
 
-  background-color: var(--card-background-color);
+    background-color: var(--card-background-color);
 
-  /* disable dragging */
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
+    /* disable dragging */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
 
-  /* disable selection */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    /* disable selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
-  top: 100%;
-  left: 50%;
+    top: 100%;
+    left: 50%;
 
-  cursor: grab;
-  border-radius: 20px;
-  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+    cursor: grab;
+    border-radius: 20px;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+    color: var(--text-light);
 
-  /* overflow: hidden; */
+    /* overflow: hidden; */
 
-  transition: box-shadow 0.25s ease;
+    transition: box-shadow 0.25s ease;
 }
 
 /* Card dark until highlighted */
 .card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-  filter: blur(0px);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    filter: blur(0px);
 
-  transition: background-color 0.25s ease, filter 0.25s ease;
+    transition: background-color 0.25s ease, filter 0.25s ease;
 }
 .card--hover.card::after {
-  background-color: rgba(255, 255, 255, 0.05);
-  filter: blur(50px) brightness(1.5);
+    background-color: rgba(255, 255, 255, 0.05);
+    filter: blur(50px) brightness(1.5);
 }
 
 .card--hover {
-  box-shadow: 30px 90px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 30px 90px 0px rgba(0, 0, 0, 0.2);
 }
 
 .card-dragging {
-  box-shadow: 15px 40px 5px rgba(0, 0, 0, 0.2);
-  pointer-events: none;
+    box-shadow: 15px 40px 5px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
 }
 
 .card-in-container {
-  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
-  pointer-events: none;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
 }
 
 .card img {
-  width: calc(100% - 2rem);
-  height: calc(100% - 6rem);
-  object-fit: cover;
-  pointer-events: none;
-  border-radius: 20px;
-  /* border-top-right-radius: 0px;
+    width: calc(100% - 2rem);
+    height: calc(100% - 6rem);
+    object-fit: cover;
+    pointer-events: none;
+    border-radius: 20px;
+    /* border-top-right-radius: 0px;
   border-top-left-radius: 0px; */
 
-  margin: 5rem 1rem 1rem 1rem;
+    margin: 5rem 1rem 1rem 1rem;
 }
 
 .card-details {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5rem;
-  border-radius: 20px;
-  z-index: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    border-radius: 20px;
+    z-index: inherit;
 
-  display: flex;
-  justify-content: start;
-  align-items: center;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 
 .card-name {
-  color: white;
-  font-size: 2rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-left: 6rem;
+    color: inherit;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: 6rem;
 }
 
 .card-icon {
-  position: absolute;
-  top: 0.5rem;
-  left: 1rem;
-  display: block;
-  color: white;
-  font-size: 4rem;
-  width: 4rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    display: block;
+    color: inherit;
+    font-size: 4rem;
+    width: 4rem;
 }
 
 .card-container-overlay {
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 11;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
 
-  background-color: transparent;
-  transition: background-color 0.3s ease;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
 }
 
-.card-container-overlay:has(> .dropoff-location-card--moved):not(:has(> .dropoff-location-card--moved-offscreen)) {
-  background-color: rgba(0, 0, 0, 0.8);
+.card-container-overlay:has(> .dropoff-location-card--moved):not(
+        :has(> .dropoff-location-card--moved-offscreen)
+    ) {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .drag-card-info {
-  position: absolute;
-  top: -5rem;
-  left: 50%;
-  /* background-color: red; */
-  color: rgba(255, 255, 255, 0.3);
-  width: 40rem;
-  transform: translate(-50%, -50%);
-  font-size: 3.6rem;
-  text-align: center;
-  opacity: 1;
-  transition: opacity 0.1s ease-out;
+    position: absolute;
+    top: -5rem;
+    left: 50%;
+    /* background-color: red; */
+    color: rgba(255, 255, 255, 0.3);
+    width: 40rem;
+    transform: translate(-50%, -50%);
+    font-size: 3.6rem;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.1s ease-out;
 }
 
 .drag-card-info--hidden {
-  opacity: 0;
+    opacity: 0;
 }
 
 .dropoff-location-card {
-  pointer-events: all;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  aspect-ratio: 9/13;
+    pointer-events: all;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    aspect-ratio: 9/13;
 
-  /* dotted border */
-  border: 5px dashed rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
+    /* dotted border */
+    border: 5px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
 
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15), inset 10px 10px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15), inset 10px 10px 10px rgba(0, 0, 0, 0.15);
 
-  transition: all 0.4s ease;
+    transition: all 0.4s ease;
 }
 .dropoff-location-card--hover {
-  width: 380px;
+    width: 380px;
 }
 
 .dropoff-location-card::after {
-  pointer-events: none;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  transition: all 0.4s ease;
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: all 0.4s ease;
 }
 .dropoff-location-card--hover::after {
-  pointer-events: none;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
-  filter: blur(100px);
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    filter: blur(100px);
 }
 
 .dropoff-location-card--moved {
-  position: fixed;
-  top: 1rem;
-  left: 50%;
-  transform: translate(-50%, 0);
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 .dropoff-location-card--moved-offscreen {
-  position: fixed;
-  top: -100%;
-  left: 50%;
-  transform: translate(-50%, 0);
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 .dropoff-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 8rem;
-  opacity: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    opacity: 1;
 
-  transition: all 0.15s ease;
+    transition: all 0.15s ease;
 }
 .dropoff-icon--hidden {
-  opacity: 0;
+    opacity: 0;
 }
 
 .card-dragging-help-text {
-  pointer-events: none;
-  opacity: 1;
+    pointer-events: none;
+    opacity: 1;
 
-  position: absolute;
-  top: -3rem;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2.4rem;
-  text-align: center;
-  width: 40rem;
+    position: absolute;
+    top: -3rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.4rem;
+    text-align: center;
+    width: 40rem;
 
-  transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 .card-dragging-help-text--hidden {
-  opacity: 0;
+    opacity: 0;
 }
 
 /* ----------------------- OVERLAY -----------------------  */
+.start-page-cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-color);
 
-.overlay-cover {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--overlay-color);
-
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
-  background-size: 30px 30px;
-  opacity: 1;
-  transition: opacity 0.3s ease-out;
-  z-index: 10;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+    background-size: 30px 30px;
+    opacity: 1;
+    z-index: 10;
 }
-.overlay-cover--hidden {
-  opacity: 0;
-  pointer-events: none;
+.overlay-cover {
+    --cover-edge-width: 40px;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(calc(-100% - var(--cover-edge-width)));
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-color);
+    z-index: 10;
+}
+.overlay-cover--active {
+    animation: slide-in 1s cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+.overlay-cover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(-1 * var(--cover-edge-width));
+    width: calc(100% + calc(2 * var(--cover-edge-width)));
+    height: 100%;
+    border-right: var(--cover-edge-width) solid white;
+    border-left: var(--cover-edge-width) solid white;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(calc(-100% - var(--cover-edge-width)));
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(100% + var(--cover-edge-width)));
+    }
 }
 
 /* ----------------------- CARD PAGE SECTIONS ----------------------- */
 
 .card-page-section {
-  padding: 1rem;
+    padding: 1rem;
 }
 .card-page-section--hidden {
-  display: none;
+    display: none;
 }
 
 .hidden {
-  display: none !important;
+    display: none !important;
 }

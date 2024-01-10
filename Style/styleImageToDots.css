@@ -1,0 +1,105 @@
+.card-page-section[data-id="image-to-dots"] {
+    margin: 0 10rem;
+    font-size: 2.4rem;
+}
+
+/* --------------------- TITLE SECTION --------------------- */
+
+.itd-title-section {
+    position: relative;
+    font-family: "Long Cang", cursive;
+    font-size: 10rem;
+    /* font-family: "Permanent Marker", cursive; */
+
+    width: 80%;
+    height: 400px;
+    margin: auto;
+    border-radius: 50px;
+
+    overflow: hidden;
+
+    margin-bottom: 2rem;
+}
+
+.itd-title-section h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: max-content;
+    text-align: center;
+
+    text-shadow: 10px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.itd-title-section video {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.25);
+}
+
+/* --------------------- MAIN SECTION --------------------- */
+.itd-about {
+    width: 50%;
+    margin: auto;
+    font-size: 2.4rem;
+    text-align: center;
+}
+
+.itd-try-it-out {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.itd-iframe {
+    width: 100%;
+    height: 70vh;
+    border-radius: 40px;
+}
+
+.itd-watch-development {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+}
+
+/* --------------------- HOW TO USE --------------------- */
+.itd-how-to-use-section {
+    font-size: 2.4rem;
+}
+.itd-how-to-use h3 {
+    font-size: 5.4rem;
+    border-bottom: 2px solid var(--text-light);
+    margin-bottom: 1rem;
+}
+.itd-how-to-use-step {
+    margin: 2rem 0;
+}
+.itd-how-to-use-step-text {
+    font-size: inherit;
+}
+.itd-how-to-use-step-text h4 {
+    font-size: 3.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.itd-how-to-use-media {
+    border-radius: 50px;
+    max-width: 50%;
+}

@@ -1,182 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700;900&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Long+Cang&family=Permanent+Marker&display=swap"
+            rel="stylesheet"
+        />
 
-    <link rel="stylesheet" href="/Style/general.css" />
-    <link rel="stylesheet" href="/Style/styleCornerKingdoms.css" />
-    <link rel="stylesheet" href="./Style/style.css" />
-    <link rel="stylesheet" href="./Style/mediaQueries.css" />
-    <script type="module" src="/CardInteraction.js"></script>
-    <script type="module" src="/PageControl.js"></script>
+        <link rel="stylesheet" href="./Style/general.css" />
+        <link rel="stylesheet" href="./Style/style.css" />
+        <link rel="stylesheet" href="./Style/styleCornerKingdoms.css" />
+        <link rel="stylesheet" href="./Style/styleImageToDots.css" />
+        <link rel="stylesheet" href="./Style/styleAbout.css" />
 
-    <title>Max Porter</title>
-  </head>
-  <body>
-    <!-- duplicate header -->
-    <header>
-      <h1 class="my-name"><a href="/#">Max Porter</a></h1>
-      <ul class="social-links">
-        <li>
-          <a href="https://github.com/MaximilianPorter" target="_blank" rel="noopener">
-            <ion-icon name="logo-github"></ion-icon>
-            <span>Github</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/max-porter-290175196/" target="_blank" rel="noopener">
-            <ion-icon name="logo-linkedin"></ion-icon>
-            <span>LinkedIn</span>
-          </a>
-        </li>
-        <li>
-          <a href="mailto:mx.porters@gmail.com" target="_blank" rel="noopener">
-            <ion-icon name="mail-outline"></ion-icon>
-            <span>Email</span>
-          </a>
-        </li>
-        <li>
-          <!-- resume -->
-          <a href="/UpdatedResume.pdf" target="_blank" rel="noopener">
-            <ion-icon name="document-text-outline"></ion-icon>
-            <span>Resume</span>
-          </a>
-        </li>
-      </ul>
-    </header>
+        <link rel="stylesheet" href="./Style/mediaQueries.css" />
+        <script type="module" src="./CardInteraction.js"></script>
+        <script type="module" src="./PageControl.js"></script>
 
-    <div class="overlay-cover">
-      <header>
-        <h1 class="my-name"><a href="/#">Max Porter</a></h1>
-        <ul class="social-links">
-          <li>
-            <a href="https://github.com/MaximilianPorter" target="_blank" rel="noopener">
-              <ion-icon name="logo-github"></ion-icon>
-              <span>Github</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/max-porter-290175196/" target="_blank" rel="noopener">
-              <ion-icon name="logo-linkedin"></ion-icon>
-              <span>LinkedIn</span>
-            </a>
-          </li>
-          <li>
-            <a href="mailto:mx.porters@gmail.com" target="_blank" rel="noopener">
-              <ion-icon name="mail-outline"></ion-icon>
-              <span>Email</span>
-            </a>
-          </li>
-          <li>
-            <!-- resume -->
-            <a href="/UpdatedResume.pdf" target="_blank" rel="noopener">
-              <ion-icon name="document-text-outline"></ion-icon>
-              <span>Resume</span>
-            </a>
-          </li>
-        </ul>
-      </header>
-    </div>
-    <div class="card-container-overlay">
-      <div class="dropoff-location-card">
-        <ion-icon class="dropoff-icon dropoff-icon--hidden" name="add-outline"></ion-icon>
-        <div class="drag-card-info">
-          <p>Drag card here!</p>
-          <ion-icon name="arrow-down-outline"></ion-icon>
+        <title>Max Porter</title>
+    </head>
+    <body>
+        <!-- duplicate header -->
+        <header>
+            <h1 class="my-name"><a href="/#">Max Porter</a></h1>
+            <ul class="social-links">
+                <li>
+                    <a href="https://github.com/MaximilianPorter" target="_blank" rel="noopener">
+                        <ion-icon name="logo-github"></ion-icon>
+                        <span>Github</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="https://www.linkedin.com/in/max-porter-290175196/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                        <span>LinkedIn</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:mx.porters@gmail.com" target="_blank" rel="noopener">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <span>Email</span>
+                    </a>
+                </li>
+                <li>
+                    <!-- resume -->
+                    <a href="./UpdatedResume.pdf" target="_blank" rel="noopener">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Resume</span>
+                    </a>
+                </li>
+            </ul>
+        </header>
+
+        <div class="start-page-cover"></div>
+        <div class="overlay-cover"></div>
+        <div class="card-container-overlay">
+            <div class="dropoff-location-card">
+                <ion-icon class="dropoff-icon dropoff-icon--hidden" name="add-outline"></ion-icon>
+                <div class="drag-card-info">
+                    <p>Drag card here!</p>
+                    <ion-icon name="arrow-down-outline"></ion-icon>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="cards-hand">
-      <!-- <div class="card" data-id="corner-kingdoms">
+        <div class="cards-hand">
+            <!-- <div class="card" data-id="corner-kingdoms">
         <div class="card-details">
           <ion-icon class="card-icon" name="game-controller-outline"></ion-icon>
           <p class="card-name">Card Name</p>
         </div>
         <img src="/Card Images/card_cornerkingdoms.png" alt="example card" />
       </div> -->
-    </div>
-
-    <div class="card-dragging-help-text card-dragging-help-text--hidden">
-      <p>Drag Me.</p>
-    </div>
-
-    <section class="card-page-section" data-id="about">
-      <h2 class="about-title">Hi I'm Max.</h2>
-      <p>
-        Highly motivated and self-taught developer of 7+ years eager to apply and expand my technical skills in a collaborative and innovative environment.
-        Experienced problem-solver with strong programming knowledge and a desire to assist in the development of cutting-edge software solutions.
-      </p>
-    </section>
-
-    <section class="card-page-section" data-id="corner-kingdoms">
-      <div class="ck-title-section">
-        <h2>Corner Kingdoms</h2>
-      </div>
-      <p class="ck-about">
-        Corner Kingdoms is a splitscreen RTS game where players build up their kingdom and fight against their opponent. The game is built in
-        <span class="highlight-word">Unity</span> and started because I wanted to expand a previous similar project named
-        <a href="https://somebody-max.itch.io/birdsandblades" rel="noopener" target="_blank">Birds and Blades</a>. The game is currently in development.
-      </p>
-
-      <div id="ck-features" class="ck-features-list">
-        <ul>
-          <li>Exciting 2-4 player gameplay</li>
-          <li>Fight in teams or every man for themselves</li>
-          <li>Procedurally generated world every game</li>
-          <li>Simplified RTS style gameplay</li>
-          <li>No limit to army size. Bigger army, better person.</li>
-          <li>Resource graph after the game ends</li>
-        </ul>
-        <div class="ck-features-list-right">
-          <img class="ck-features-screenshot" src="/ProjectContent/CornerKingdoms/cornerkingdomssplitscreen.png" alt="splitscreen screenshot" />
-          <a class="itch-link" href="https://somebody-max.itch.io/corner-kingdoms" rel="noopener" target="_blank" title="Store Page">
-            <img class="itch-button" src="https://static.itch.io/images/badge-color.svg" alt="" />
-          </a>
         </div>
-      </div>
 
-      <p class="ck-thumbnail-precursor">I have a couple development videos on the process of making this project.</p>
-      <div class="ck-thumbnails">
-        <a href="https://www.youtube.com/watch?v=D0sh_FXHDFI" rel="noopener" target="_blank">
-          <ion-icon name="play"></ion-icon>
-          <img class="video-thumbnail-img" src="/ProjectContent/CornerKingdoms/thumbnail0.jpg" alt="thumbnail of devlog 0 for corner kingdoms" />
-        </a>
-        <a href="https://www.youtube.com/watch?v=D0sh_FXHDFI" rel="noopener" target="_blank">
-          <ion-icon name="play"></ion-icon>
-          <img class="video-thumbnail-img" src="/ProjectContent/CornerKingdoms/thumbnail1.jpg" alt="thumbnail of devlog 1 for corner kingdoms" />
-        </a>
-        <a href="https://www.youtube.com/watch?v=D0sh_FXHDFI" rel="noopener" target="_blank">
-          <ion-icon name="play"></ion-icon>
-          <img class="video-thumbnail-img" src="/ProjectContent/CornerKingdoms/thumbnail2.jpg" alt="thumbnail of devlog 2 for corner kingdoms" />
-        </a>
-      </div>
+        <div class="card-dragging-help-text card-dragging-help-text--hidden">
+            <p>Drag Me.</p>
+        </div>
 
-      <div>
-        <h3><a href="#">Gameplay</a></h3>
-        <p></p>
-      </div>
-    </section>
+        <section class="card-page-section card-page-section--hidden" data-id="about">
+            <h2 class="about-title">Hi I'm Max.</h2>
+            <p>
+                Highly motivated and self-taught developer of 7+ years eager to apply and expand my
+                technical skills in a collaborative and innovative environment. Experienced
+                problem-solver with strong programming knowledge and a desire to assist in the
+                development of cutting-edge software solutions.
+            </p>
+        </section>
 
-    <section class="card-page-section" data-id="more-games">
-      <h2>I've made lot of games...</h2>
-      <p>Here's a showcase of some projects that were completed, some that weren't, and some that are still in development.</p>
-    </section>
+        <section class="card-page-section card-page-section--hidden" data-id="corner-kingdoms">
+            <div class="ck-title-section">
+                <h2>Corner Kingdoms</h2>
+            </div>
+            <p class="ck-about">
+                Corner Kingdoms is a splitscreen RTS game where players build up their kingdom and
+                fight against their opponent. The game is built in
+                <span class="highlight-word">Unity</span> and started because I wanted to expand a
+                previous similar project named
+                <a href="https://somebody-max.itch.io/birdsandblades" rel="noopener" target="_blank"
+                    >Birds and Blades</a
+                >. The game is currently in development.
+            </p>
 
-    <section class="card-page-section" data-id="image-to-dots">
-      <h2>Image to Dots</h2>
-      <p>
-        Image to Dots is a program that converts an image into a series of colored dots. The program is written in javascript and can easily be showcased
-        <a href="#">HERE</a>.
-      </p>
-    </section>
+            <div class="ck-features-list">
+                <ul>
+                    <li>Exciting 2-4 player gameplay</li>
+                    <li>Fight in teams or every man for themselves</li>
+                    <li>Procedurally generated world every game</li>
+                    <li>Simplified RTS style gameplay</li>
+                    <li>No limit to army size. Bigger army, better person.</li>
+                    <li>Resource graph after the game ends</li>
+                </ul>
+                <div class="ck-features-list-right">
+                    <img
+                        class="ck-features-screenshot"
+                        src="/ProjectContent/CornerKingdoms/cornerkingdomssplitscreen.png"
+                        alt="splitscreen screenshot"
+                    />
+                    <a
+                        class="itch-link"
+                        href="https://somebody-max.itch.io/corner-kingdoms"
+                        rel="noopener"
+                        target="_blank"
+                        title="Store Page"
+                    >
+                        <img
+                            class="itch-button"
+                            src="https://static.itch.io/images/badge-color.svg"
+                            alt=""
+                        />
+                    </a>
+                </div>
+            </div>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  </body>
+            <p class="ck-thumbnail-precursor">
+                I have a couple development videos on the process of making this project.
+            </p>
+            <div class="ck-thumbnails">
+                <a
+                    href="https://www.youtube.com/watch?v=D0sh_FXHDFI"
+                    rel="noopener"
+                    target="_blank"
+                    class="thumbnail"
+                >
+                    <ion-icon name="play"></ion-icon>
+                    <img
+                        class="video-thumbnail-img"
+                        src="/ProjectContent/CornerKingdoms/thumbnail0.jpg"
+                        alt="thumbnail of devlog 0 for corner kingdoms"
+                    />
+                </a>
+                <a
+                    href="https://www.youtube.com/watch?v=D0sh_FXHDFI"
+                    rel="noopener"
+                    target="_blank"
+                    class="thumbnail"
+                >
+                    <ion-icon name="play"></ion-icon>
+                    <img
+                        class="video-thumbnail-img"
+                        src="/ProjectContent/CornerKingdoms/thumbnail1.jpg"
+                        alt="thumbnail of devlog 1 for corner kingdoms"
+                    />
+                </a>
+                <a
+                    href="https://www.youtube.com/watch?v=D0sh_FXHDFI"
+                    rel="noopener"
+                    target="_blank"
+                    class="thumbnail"
+                >
+                    <ion-icon name="play"></ion-icon>
+                    <img
+                        class="video-thumbnail-img"
+                        src="/ProjectContent/CornerKingdoms/thumbnail2.jpg"
+                        alt="thumbnail of devlog 2 for corner kingdoms"
+                    />
+                </a>
+            </div>
+
+            <div>
+                <h3 class="page-scroll-link"><a href="#">Gameplay</a></h3>
+                <p></p>
+            </div>
+        </section>
+
+        <section class="card-page-section card-page-section--hidden" data-id="more-games">
+            <h2>I've made lot of games...</h2>
+            <p>
+                Here's a showcase of some projects that were completed, some that weren't, and some
+                that are still in development.
+            </p>
+        </section>
+
+        <section class="card-page-section card-page-section--hidden" data-id="image-to-dots">
+            <div class="itd-title-section">
+                <h2>Image to Dots</h2>
+                <video
+                    src="./ProjectContent/ImagetoDots/dots-short-demo.mp4"
+                    autoplay="autoplay"
+                    loop="loop"
+                    muted="muted"
+                ></video>
+            </div>
+            <p class="itd-about">
+                Image to Dots is a <span class="highlight-word">Web Application</span> that converts
+                an image into a series of colored dots. The program is written in
+                <span class="highlight-word">JavaScript</span>,
+                <span class="highlight-word-html">HTML</span>, and
+                <span class="highlight-word-css">CSS</span>.
+                <br />
+                <br />
+                <a href="https://imagetodots.netlify.app/" rel="noopener" target="_blank">
+                    TRY IT OUT.
+                </a>
+            </p>
+
+            <!-- <div class="line-break"></div>
+
+            <div class="itd-try-it-out">
+                <iframe
+                    src="https://imagetodots.netlify.com"
+                    frameborder="0"
+                    title="Image to Dots"
+                    class="itd-iframe"
+                ></iframe>
+            </div> -->
+
+            <div class="line-break"></div>
+
+            <div class="itd-watch-development">
+                <a
+                    href="https://www.youtube.com/watch?v=adoa-eBZ-w8"
+                    rel="noopener"
+                    target="_blank"
+                    class="thumbnail"
+                >
+                    <ion-icon name="play"></ion-icon>
+                    <img
+                        class="video-thumbnail-img"
+                        src="/ProjectContent/ImagetoDots/imagetodotsThumbnail.jpg"
+                        alt="thumbnail of devlog 0 for corner kingdoms"
+                    />
+                </a>
+                <a
+                    href="https://www.youtube.com/watch?v=adoa-eBZ-w8"
+                    rel="noopener"
+                    target="_blank"
+                >
+                    CHECK OUT THE DEVELOPMENT VIDEO.
+                </a>
+            </div>
+
+            <div id="itd-how-to-use" class="itd-how-to-use">
+                <h3 class="page-scroll-link">How to use</h3>
+                <div class="itd-how-to-use-section">
+                    <!-- 1. upload an image -->
+                    <div class="itd-how-to-use-step split-section">
+                        <div class="itd-how-to-use-step-text">
+                            <h4>1. Upload an image</h4>
+                            <p>
+                                The image can be any size, but the larger the image, the longer it
+                                will take to process. From testing, higher contrast images work
+                                better.
+                            </p>
+                        </div>
+                        <video
+                            class="itd-how-to-use-media"
+                            src="./ProjectContent/ImagetoDots/uploadpicture.mp4"
+                            autoplay="autoplay"
+                            loop="loop"
+                            muted="muted"
+                        ></video>
+                    </div>
+                    <!-- 2. mess with the settings -->
+                    <div class="itd-how-to-use-step split-section-reverse">
+                        <div class="itd-how-to-use-step-text">
+                            <h4>2. Mess Around</h4>
+                            <p>
+                                There are lots of settings to tweak to get the image to look how
+                                you'd like it. Or you could just mess around with them and have fun.
+                            </p>
+                        </div>
+                        <video
+                            class="itd-how-to-use-media"
+                            src="./ProjectContent/ImagetoDots/messwithsettings.mp4"
+                            autoplay="autoplay"
+                            loop="loop"
+                            muted="muted"
+                        ></video>
+                    </div>
+                    <!-- 3. download the image -->
+                    <div class="itd-how-to-use-step split-section">
+                        <div class="itd-how-to-use-step-text">
+                            <h4>3. Save Your Image</h4>
+                            <p>
+                                Once you're happy with the image, you can download it and use it
+                                however you'd like.
+                            </p>
+                        </div>
+                        <video
+                            class="itd-how-to-use-media"
+                            src="./ProjectContent/ImagetoDots/savevideo.mp4"
+                            autoplay="autoplay"
+                            loop="loop"
+                            muted="muted"
+                        ></video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script
+            type="module"
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+        ></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </body>
 </html>
