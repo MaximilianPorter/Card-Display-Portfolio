@@ -119,6 +119,14 @@ img {
     font-family: inherit;
 }
 
+pre code {
+    margin: auto;
+    font-size: 1.6rem;
+    border-radius: 10px;
+    width: max-content;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.15);
+}
+
 a:link,
 a:visited {
     position: relative;

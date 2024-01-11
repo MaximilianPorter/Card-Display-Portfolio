@@ -96,14 +96,6 @@ import activeCardContainer from "./ActiveCardContainer.js";
             handElement.insertAdjacentHTML("beforeend", cardMarkup);
         });
     }
-    function SetCorrectCardFromUrl() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const cardId = urlParams.get("card");
-        if (!cardId) return;
-
-        const cardObject = allCardObjects.find((card) => card.GetId() === cardId);
-        if (cardObject) SetActiveCard(cardObject);
-    }
     function CreateCardObjectsFromElements() {
         cardElements.forEach((card, index) => {
             const cardObject = new Card(
@@ -129,6 +121,14 @@ import activeCardContainer from "./ActiveCardContainer.js";
         UpdateCardPositionsInHand();
 
         SetCorrectCardFromUrl();
+    }
+    function SetCorrectCardFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const cardId = urlParams.get("card");
+        if (!cardId) return;
+
+        const cardObject = allCardObjects.find((card) => card.GetId() === cardId);
+        if (cardObject) SetActiveCard(cardObject);
     }
     //#endregion
 

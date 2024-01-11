@@ -16,6 +16,7 @@ setInterval(() => {
     if (ageTimer) ageTimer.innerHTML = TimeSinceDate(new Date("2016-05-30T00:00:00"), 9);
     if (age) age.innerHTML = TimeSinceDate(new Date("2000-05-30T00:00:00"));
 }, 10);
+
 // listen for updated card event
 document.addEventListener("updatedCard", (e) => {
     const activeCard = activeCardContainer.GetActiveCard();
@@ -47,8 +48,12 @@ function MoveCardContainer() {
     dropoffLocationElement.classList.add("dropoff-location-card--moved");
 
     setTimeout(() => {
-        dropoffLocationElement.classList.add("dropoff-location-card--moved-offscreen");
+        HideCardContainer();
     }, 600);
+}
+
+function HideCardContainer() {
+    dropoffLocationElement.classList.add("dropoff-location-card--moved-offscreen");
 }
 
 function ActivateOverlay() {

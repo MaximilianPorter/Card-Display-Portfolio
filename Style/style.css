@@ -328,8 +328,10 @@ header {
 }
 
 .card-name {
-    font-family: "Rubik Mono One", monospace;
-    font-size: 1.6rem;
+    /* font-family: "Rubik Mono One", monospace; */
+    font-family: "Permanent Marker", cursive;
+    font-size: 2.4rem;
+    line-height: 2rem;
     display: block;
 }
 
