@@ -46,10 +46,10 @@ import activeCardContainer from "./ActiveCardContainer.js";
     CreateEvents_DropAreaHoverBehaviour();
 
     // used for setting a card as active that the user doens't specifically drag
-    function SetActiveCard(card) {
+    function SetActiveCard(card, isInitialPageLoad = false) {
         DragCard_Start(card);
         HoverDropArea(true);
-        DropCard(card);
+        DropCard(card, isInitialPageLoad);
     }
 
     //#region SETUP -----------------------------------------------------
@@ -128,7 +128,7 @@ import activeCardContainer from "./ActiveCardContainer.js";
         if (!cardId) return;
 
         const cardObject = allCardObjects.find((card) => card.GetId() === cardId);
-        if (cardObject) SetActiveCard(cardObject);
+        if (cardObject) SetActiveCard(cardObject, true);
     }
     //#endregion
 
@@ -290,12 +290,12 @@ import activeCardContainer from "./ActiveCardContainer.js";
         clearTimeout(hoverCardHelpTimeout);
         card.SetDesiredPosition(mouseX, mouseY);
     }
-    function DropCard(card) {
+    function DropCard(card, isInitialPageLoad = false) {
         if (!card) return;
         RemoveCardDraggingStyle(card);
 
         if (isHoveringCenterWithCard) {
-            DropCardInContainer();
+            DropCardInContainer(isInitialPageLoad);
         } else {
             PutCardBackInHand(cardDragging);
         }
@@ -314,12 +314,12 @@ import activeCardContainer from "./ActiveCardContainer.js";
         card.ResetScale();
         UpdateCardPositionsInHand();
     }
-    function DropCardInContainer() {
+    function DropCardInContainer(isInitialPageLoad = false) {
         if (centerCard) {
             PutCardBackInHand(centerCard);
         }
 
-        activeCardContainer.SetActiveCard(cardDragging);
+        activeCardContainer.SetActiveCard(cardDragging, isInitialPageLoad);
 
         cardDragging.GetElement().style.zIndex = lowestZIndex;
         cardDragging.GetElement().classList.add("card-in-container");

@@ -1,3 +1,7 @@
+:root {
+    --ck-image-border-radius: 40px;
+}
+
 .card-page-section[data-id="corner-kingdoms"] {
     margin: 0 5rem;
     font-size: 2.4rem;
@@ -11,7 +15,7 @@
     font-size: 5.4rem;
 
     padding: 2.4rem;
-    border-radius: 40px;
+    border-radius: var(--ck-image-border-radius);
     margin-bottom: 2.4rem;
 
     box-shadow: 20px 20px 60px #00000050;
@@ -31,7 +35,7 @@
 
     background-color: rgba(255, 255, 255, 0.03);
     padding: 2rem;
-    border-radius: 50px;
+    border-radius: calc(var(--ck-image-border-radius) + 10px);
 }
 .ck-features-list ul li {
     margin-left: 3rem;
@@ -48,8 +52,34 @@
 .ck-features-screenshot {
     width: 100%;
     object-fit: cover;
-    border-radius: 40px;
+    border-radius: var(--ck-image-border-radius);
 }
+.ck-simplicity-statement {
+    width: 100%;
+    margin-bottom: 5rem;
+    font-size: 3.6rem;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: var(--ck-image-border-radius);
+}
+
+.ck-mechanics img {
+    display: block;
+    max-height: 300px;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: var(--ck-image-border-radius);
+}
+.margin-auto {
+    margin: auto;
+}
+
+.card-page-section[data-id="corner-kingdoms"] .page-scroll-link {
+    font-size: 3.6rem;
+    margin-bottom: 1rem;
+}
+
 /*-----------------------------  THUMBNAILS ----------------------------- */
 .ck-thumbnail-precursor {
     margin: auto;

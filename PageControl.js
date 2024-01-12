@@ -20,6 +20,7 @@ setInterval(() => {
 // listen for updated card event
 document.addEventListener("updatedCard", (e) => {
     const activeCard = activeCardContainer.GetActiveCard();
+    const isInitialPageLoad = e.detail;
 
     // change url to match card
     const cardId = activeCard.GetId();
@@ -29,6 +30,16 @@ document.addEventListener("updatedCard", (e) => {
     dragCardInfoElement.classList.add("drag-card-info--hidden");
     const newNameText = `HOME`;
     myNameHeaderElement.innerHTML = `<a href="/#">${newNameText}</a>`;
+
+    if (isInitialPageLoad === true) {
+        MoveCardContainer(isInitialPageLoad);
+        ScrollToTop();
+        HideAllPages();
+        ShowPage(activeCard.GetId());
+        startPageCover.classList.add("hidden");
+        mobileCardsContainerElement.classList.add("hidden");
+        return;
+    }
 
     MoveCardContainer();
     ActivateOverlay();
@@ -44,16 +55,15 @@ document.addEventListener("updatedCard", (e) => {
     }, 1000);
 });
 
-function MoveCardContainer() {
+function MoveCardContainer(instant = false) {
     dropoffLocationElement.classList.add("dropoff-location-card--moved");
 
-    setTimeout(() => {
-        HideCardContainer();
-    }, 600);
-}
-
-function HideCardContainer() {
-    dropoffLocationElement.classList.add("dropoff-location-card--moved-offscreen");
+    setTimeout(
+        () => {
+            dropoffLocationElement.classList.add("dropoff-location-card--moved-offscreen");
+        },
+        instant ? 0 : 500
+    );
 }
 
 function ActivateOverlay() {

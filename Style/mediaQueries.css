@@ -1,4 +1,8 @@
 @media screen and (width < 1300px) {
+    .grid-2-row {
+        grid-template-columns: repeat(2, 50%);
+    }
+
     /* ----------------------- IMAGE TO DOTS ----------------------- */
     .card-page-section[data-id="image-to-dots"] {
         margin: 0 4rem;
@@ -9,6 +13,17 @@
 }
 
 @media screen and (width < 1000px) {
+    .split-section.break-early,
+    .split-section-reverse.break-early {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .grid-2-row.break-early {
+        grid-template-columns: 100%;
+    }
+    .grid-2-row {
+        grid-template-columns: repeat(2, 50%);
+    }
     /* ----------------------- ABOUT ----------------------- */
     .card-page-section[data-id="about"] {
         width: 90%;
@@ -17,6 +32,9 @@
         font-size: 6.4rem;
     }
     /* ----------------------- CORNER KINGDOMS ----------------------- */
+    .card-page-section[data-id="corner-kingdoms"] {
+        font-size: 2rem;
+    }
     .ck-features-list {
         flex-direction: column;
         width: 100%;
@@ -58,6 +76,12 @@
 }
 
 /* ------------------------------------------------------------------------------------------------- */
+@media screen and (width < 800px) {
+    /* ----------------------- CORNER KINGDOMS ----------------------- */
+    .card-page-section[data-id="corner-kingdoms"] {
+        font-size: 1.6rem;
+    }
+}
 
 @media screen and (width < 600px) {
     header {
@@ -103,6 +127,10 @@
 
         /* margin-top: 15rem !important; */
     }
+    .grid-2-row {
+        display: grid;
+        grid-template-columns: 100%;
+    }
 
     /* ----------------------- ABOUT ----------------------- */
     .card-page-section[data-id="about"] {
@@ -113,8 +141,17 @@
         margin: 3rem auto;
         font-size: 4.8rem;
     }
+    .subtitle {
+        font-size: 1.2rem;
+    }
 
     /* ----------------------- CORNER KINGDOMS ----------------------- */
+    .card-page-section[data-id="corner-kingdoms"] .page-scroll-link {
+        font-size: 2.4rem;
+    }
+    .card-page-section[data-id="corner-kingdoms"] {
+        font-size: 1.6rem;
+    }
     .ck-title-section {
         font-size: 3.6rem;
     }
@@ -138,6 +175,12 @@
     .ck-features-list {
         font-size: 1.6rem;
     }
+    .ck-simplicity-statement {
+        font-size: 2.4rem;
+    }
+    .ck-mechanics img {
+        max-height: 200px;
+    }
 
     /* ----------------------- IMAGE TO DOTS ----------------------- */
     .card-page-section[data-id="image-to-dots"] h3 {
@@ -160,6 +203,7 @@
         margin: 5rem 0;
     }
 }
+
 @media screen and (width < 400px) {
     .social-links {
         justify-content: center;
