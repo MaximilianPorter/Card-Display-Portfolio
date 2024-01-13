@@ -3,6 +3,12 @@
     font-size: 2.4rem;
 }
 
+.card-page-section[data-id="image-to-dots"] h3 {
+    font-size: 5.4rem;
+    border-bottom: 2px solid var(--text-light);
+    margin-bottom: 1rem;
+}
+
 /* --------------------- TITLE SECTION --------------------- */
 
 .itd-title-section {
@@ -83,11 +89,7 @@
 .itd-how-to-use-section {
     font-size: 2.4rem;
 }
-.itd-how-to-use h3 {
-    font-size: 5.4rem;
-    border-bottom: 2px solid var(--text-light);
-    margin-bottom: 1rem;
-}
+
 .itd-how-to-use-step {
     margin: 2rem 0;
 }

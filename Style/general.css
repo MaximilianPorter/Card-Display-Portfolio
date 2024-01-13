@@ -52,6 +52,9 @@ img {
     justify-content: center;
     align-items: center;
 }
+.split-child-50 {
+    max-width: 50%;
+}
 .flex-vertical {
     display: flex;
     flex-direction: column;

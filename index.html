@@ -114,15 +114,15 @@
             <p>
                 I'm a <span class="age">23</span> year old <span class="highlight-word">game programmer</span> and
                 <span class="highlight-word">designer</span>, and I've been making games for
-                <span class="age-timer"></span> years. I published my first app on the Google Play store that same year,
-                and I'm currently working on an assortment of different projects with a focus on finding a job in the
-                tech space and bettering myself as a programmer and devloper.
+                <span class="age-timer"></span> years. I published my first app on the Google Play store in 2016, and
+                I'm currently working on an assortment of different projects with a focus on finding a job in the tech
+                space and bettering myself as a programmer and devloper.
             </p>
             <div class="line-break"></div>
             <p>
-                I made this portfolio website to test my skills as a
-                <span class="highlight-word">web developer </span> and here you can see some of the projects I've worked
-                on using some of the skills I've picked up throughout my learning journey. I wanted to make something
+                I built this portfolio website to showcase my abilities as a
+                <span class="highlight-word">web developer</span>. Here, you can explore some of the projects I've
+                created using skills I've developed over years of determined self-learning. I wanted to make something
                 unique and since I make games, I thought it would be cool to make a website that feels like a game. I
                 hope you enjoy it!
             </p>
@@ -576,6 +576,55 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                         ></video>
                     </div>
                 </div>
+            </div>
+            <div class="itd-details">
+                <h3 class="page-scroll-link">Details</h3>
+                <p>
+                    I use an <span class="highlight-word">object</span> to hold all the settings that can be adjusted by
+                    the user. This way, I can easily add new settings without having to change the code too much.
+                </p>
+                <br />
+                <div class="split-section">
+                    <div class="split-child-50">
+                        <pre><code class="language-javascript">class Debug_Settings extends Settings {
+constructor() {
+    super();
+    this.isDrawingDebug = true;
+
+    this.CELL_SIZE = 50;
+    this.dotSpeed = 0.9;
+    this.maxDotRadius = 10;
+    this.minDotRadius = 0.001;
+    this.centeringFactor = 0.1;
+    this.alignmentFactor = 0.1;
+    this.turnTowardsLightFactor = 0.001;
+    this.separationFactor = 1;
+}
+}
+const debugSettings = new Debug_Settings();</code></pre>
+                        <p class="subtitle">I can extend the class for debug settings...</p>
+                    </div>
+                    <div class="split-child-50">
+                        <pre><code class="language-javascript">class MoreDots_Settings extends Settings {
+constructor() {
+    super();
+    this.CELL_SIZE = 20;
+    this.dotsToAdd = 3000;
+    this.dotSpeed = 0.5;
+    this.maxDotRadius = 10;
+    this.minDotRadius = 0.001;
+    this.centeringFactor = 0.1;
+    this.alignmentFactor = 1;
+    this.turnTowardsLightFactor = 0.001;
+    this.separationFactor = 1;
+    this.slownessFactor = 0.1;
+}
+}</code></pre>
+                        <p class="subtitle">Or any other bundle of settings I prefer.</p>
+                    </div>
+                </div>
+                <br />
+                <p>I just have to change the ones I want if I want to make certain packs</p>
             </div>
         </section>
 
