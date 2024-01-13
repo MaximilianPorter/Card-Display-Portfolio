@@ -1,5 +1,6 @@
 import Card from "./Card.js";
 import activeCardContainer from "./ActiveCardContainer.js";
+import GetIconMarkup from "./ProjectIconHandler.js";
 
 (async () => {
     const CARD_DATA = await GetCardDataFromJSON();
@@ -65,22 +66,8 @@ import activeCardContainer from "./ActiveCardContainer.js";
             const cardName = cardData.name;
             const cardImagePath = cardData.cardImagePath;
 
-            const webapp = `<ion-icon class="card-icon" name="laptop-outline"></ion-icon>`;
-            const gameIcon = `<ion-icon class="card-icon" name="game-controller-outline"></ion-icon>`;
-            const infoIcon = `<ion-icon class="card-icon" name="information-circle-outline"></ion-icon>`;
-
-            let typeText = ``;
-            let iconMarkup = ``;
-            if (cardData.type === "webapp") {
-                iconMarkup = webapp;
-                typeText = `Web Application`;
-            } else if (cardData.type === "game") {
-                iconMarkup = gameIcon;
-                typeText = `Game`;
-            } else if (cardData.type === "info") {
-                iconMarkup = infoIcon;
-                typeText = `Info`;
-            }
+            const iconMarkup = GetIconMarkup(cardData, cardData.type);
+            const typeText = cardData.type;
 
             const cardMarkup = `
         <div class="card" data-id="${cardId}" data-type="${typeText}">
@@ -216,6 +203,19 @@ import activeCardContainer from "./ActiveCardContainer.js";
     }
     window.addEventListener("resize", () => {
         UpdateCardPositionsInHand();
+    });
+
+    document.addEventListener("updatedCard", (e) => {
+        const activeCard = activeCardContainer.GetActiveCard();
+        // I do this because sometimes I set the active card just based
+        // on the id, and not by dragging it
+        if (activeCard.GetElement() === null) {
+            console.log("arrived at the page without dragging a card, setting active card");
+            // find the card with the same id as the active card
+            const cardObject = allCardObjects.find((card) => card.GetId() === activeCard.GetId());
+            if (cardObject) SetActiveCard(cardObject, false);
+            centerCard = cardObject;
+        }
     });
     //#endregion
 

@@ -1,3 +1,6 @@
+import GetIconMarkup from "./ProjectIconHandler.js";
+import activeCardContainer from "./ActiveCardContainer.js";
+
 (async () => {
     const CARD_DATA = await GetCardDataFromJSON();
     const mobileCards = document.querySelector(".mobile-cards");
@@ -16,22 +19,8 @@
             const cardName = cardData.name;
             const cardImagePath = cardData.cardImagePath;
 
-            const webapp = `<ion-icon class="card-icon" name="laptop-outline"></ion-icon>`;
-            const gameIcon = `<ion-icon class="card-icon" name="game-controller-outline"></ion-icon>`;
-            const infoIcon = `<ion-icon class="card-icon" name="information-circle-outline"></ion-icon>`;
-
-            let typeText = ``;
-            let iconMarkup = ``;
-            if (cardData.type === "webapp") {
-                iconMarkup = webapp;
-                typeText = `Web App`;
-            } else if (cardData.type === "game") {
-                iconMarkup = gameIcon;
-                typeText = `Game`;
-            } else if (cardData.type === "info") {
-                iconMarkup = infoIcon;
-                typeText = `Info`;
-            }
+            const iconMarkup = GetIconMarkup(cardData, cardData.type);
+            const typeText = cardData.type;
 
             const cardMarkup = `
         <button 
@@ -58,6 +47,6 @@
 
     function MobileCardClick() {
         const cardId = this.dataset.id;
-        window.location.href = `./?card=${cardId}`;
+        activeCardContainer.SetActiveCardFromId(cardId);
     }
 })();

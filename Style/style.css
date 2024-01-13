@@ -48,12 +48,81 @@ header {
     align-items: center;
     padding: 1rem 2rem;
     font-size: 1.6rem;
+    gap: 1rem;
 
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 11;
+}
+.projects-navigation {
+    position: relative;
+    margin-right: auto;
+}
+.projects-dropdown {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+
+    transition: background-color 0.15s ease;
+}
+.projects-dropdown:hover,
+.projects-dropdown:active {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.projects-dropdown-chevron {
+    transition: all 0.15s ease;
+}
+.projects-dropdown-chevron--active {
+    transform: rotate(90deg);
+}
+
+.projects-nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    list-style: none;
+    gap: 1rem;
+    width: max-content;
+
+    background-color: rgba(0, 0, 0, 0.96);
+    border-radius: 10px;
+    padding: 0rem 1rem;
+    margin-top: 1rem;
+    opacity: 0;
+    z-index: 11;
+
+    height: 0;
+    overflow: hidden;
+    transition: all 0.15s ease;
+}
+.projects-nav-links--active {
+    height: max-content;
+    padding: 1rem 1rem;
+    opacity: 1;
+}
+.nav-link {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    width: 25rem;
+
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    padding: 0.5rem;
+
+    transition: background-color 0.15s ease;
+}
+.nav-link:hover,
+.nav-link:active {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .my-name {

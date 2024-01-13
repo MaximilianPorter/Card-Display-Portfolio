@@ -77,6 +77,17 @@
 
 /* ------------------------------------------------------------------------------------------------- */
 @media screen and (width < 800px) {
+    header {
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+    .projects-navigation {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        margin: 0;
+    }
+
     /* ----------------------- CORNER KINGDOMS ----------------------- */
     .card-page-section[data-id="corner-kingdoms"] {
         font-size: 1.6rem;
@@ -84,12 +95,11 @@
 }
 
 @media screen and (width < 600px) {
-    header {
-        flex-direction: column;
-        padding: 1rem 0;
-    }
     body {
-        margin-top: 17rem;
+        margin-top: 19rem;
+    }
+    .projects-dropdown {
+        display: none;
     }
     .mobile-site {
         display: block;

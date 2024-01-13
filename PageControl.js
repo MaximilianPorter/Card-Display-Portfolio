@@ -1,5 +1,7 @@
 import activeCardContainer from "./ActiveCardContainer.js";
 import TimeSinceDate from "./DateTimer.js";
+import GetIconMarkup from "./ProjectIconHandler.js";
+import Card from "./Card.js";
 
 const dropoffLocationElement = document.querySelector(".dropoff-location-card");
 const overlayCoverElement = document.querySelector(".overlay-cover");
@@ -7,6 +9,11 @@ const dragCardInfoElement = document.querySelector(".drag-card-info");
 const startPageCover = document.querySelector(".start-page-cover");
 const mobileCardsContainerElement = document.querySelector(".mobile-cards");
 const myNameHeaderElement = document.querySelector(".my-name");
+
+// navigation links
+const projectNavLinks = document.querySelector(".projects-nav-links");
+const projectsDropdownButton = document.querySelector(".projects-dropdown");
+const projectsDropdownChevron = document.querySelector(".projects-dropdown-chevron");
 
 const cardPageSections = document.querySelectorAll(".card-page-section");
 
@@ -17,6 +24,8 @@ setInterval(() => {
     if (age) age.innerHTML = TimeSinceDate(new Date("2000-05-30T00:00:00"));
 }, 10);
 
+AddProjectsDropdownListener();
+
 // listen for updated card event
 document.addEventListener("updatedCard", (e) => {
     const activeCard = activeCardContainer.GetActiveCard();
@@ -26,7 +35,7 @@ document.addEventListener("updatedCard", (e) => {
     const cardId = activeCard.GetId();
     window.history.pushState({}, "", `?card=${cardId}`);
 
-    console.log(activeCard);
+    console.log("active card: " + activeCard.GetId());
     dragCardInfoElement.classList.add("drag-card-info--hidden");
     const newNameText = `HOME`;
     myNameHeaderElement.innerHTML = `<a href="/#">${newNameText}</a>`;
@@ -87,3 +96,67 @@ function ShowPage(pageId) {
 function ScrollToTop() {
     window.scrollTo(0, 0);
 }
+
+//#region Project Navigation Dropdown
+async function AddProjectsDropdownListener() {
+    try {
+        const CARD_DATA = await GetCardDataFromJSON();
+        CARD_DATA.forEach((cardData, i) => {
+            const cardId = cardData.id;
+            const cardName = cardData.name;
+            const iconMarkup = GetIconMarkup(cardData, cardData.type);
+
+            const navLinkMarkup = `
+            <li>
+                <a class="nav-link" href="#" data-id="${cardId}">
+                    ${iconMarkup}
+                    <p>${cardName}</p>
+                </a>
+            </li>
+            `;
+            projectNavLinks.insertAdjacentHTML("beforeend", navLinkMarkup);
+        });
+        projectsDropdownButton.addEventListener("click", () => {
+            ToggleNavigationDropdown();
+        });
+        document.addEventListener("click", (e) => {
+            if (e.target.closest(".projects-navigation")) return;
+            CloseNavigationDropdown();
+        });
+
+        document.querySelectorAll(".nav-link").forEach((link) => {
+            link.addEventListener("focus", () => {
+                ExpandNavigationDropdown();
+            });
+            link.addEventListener("click", (e) => {
+                e.preventDefault();
+                CloseNavigationDropdown();
+                projectsDropdownButton.firstElementChild.textContent = link.textContent;
+                activeCardContainer.SetActiveCardFromId(link.dataset.id);
+            });
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+function ToggleNavigationDropdown() {
+    projectsDropdownChevron.classList.toggle("projects-dropdown-chevron--active");
+    projectNavLinks.classList.toggle("projects-nav-links--active");
+}
+function ExpandNavigationDropdown() {
+    projectsDropdownChevron.classList.add("projects-dropdown-chevron--active");
+    projectNavLinks.classList.add("projects-nav-links--active");
+}
+function CloseNavigationDropdown() {
+    projectsDropdownChevron.classList.remove("projects-dropdown-chevron--active");
+    projectNavLinks.classList.remove("projects-nav-links--active");
+}
+
+async function GetCardDataFromJSON() {
+    const CARD_DATA = await fetch("./CardData.json")
+        .then((response) => response.json())
+        .then((data) => data);
+    return CARD_DATA;
+}
+
+//#endregion
