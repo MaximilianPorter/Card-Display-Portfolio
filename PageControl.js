@@ -36,6 +36,9 @@ document.addEventListener("updatedCard", (e) => {
     window.history.pushState({}, "", `?card=${cardId}`);
 
     console.log("active card: " + activeCard.GetId());
+    projectsDropdownButton.firstElementChild.textContent = activeCard
+        .GetElement()
+        ?.querySelector(".card-name").textContent;
     dragCardInfoElement.classList.add("drag-card-info--hidden");
     const newNameText = `HOME`;
     myNameHeaderElement.innerHTML = `<a href="/#">${newNameText}</a>`;
