@@ -9,6 +9,19 @@
     margin-bottom: 1rem;
 }
 
+.card-page-section[data-id="image-to-dots"] video {
+    width: 100%;
+    border-radius: 50px;
+    margin-bottom: 2rem;
+}
+
+.card-page-section[data-id="image-to-dots"] img {
+    display: block;
+    max-height: 300px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
 /* --------------------- TITLE SECTION --------------------- */
 
 .itd-title-section {

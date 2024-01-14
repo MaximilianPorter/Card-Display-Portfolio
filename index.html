@@ -584,54 +584,212 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                     </div>
                 </div>
             </div>
-            <div class="itd-details">
-                <h3 class="page-scroll-link">Details</h3>
+            <div class="itd-settings">
+                <h3 class="page-scroll-link">Settings</h3>
                 <p>
                     I use an <span class="highlight-word">object</span> to hold all the settings that can be adjusted by
                     the user. This way, I can easily add new settings without having to change the code too much.
                 </p>
                 <br />
-                <div class="split-section">
+                <div class="split-section align-center">
                     <div class="split-child-50">
                         <pre><code class="language-javascript">class Debug_Settings extends Settings {
-constructor() {
-    super();
-    this.isDrawingDebug = true;
+    constructor() {
+        super();
+        this.isDrawingDebug = true;
 
-    this.CELL_SIZE = 50;
-    this.dotSpeed = 0.9;
-    this.maxDotRadius = 10;
-    this.minDotRadius = 0.001;
-    this.centeringFactor = 0.1;
-    this.alignmentFactor = 0.1;
-    this.turnTowardsLightFactor = 0.001;
-    this.separationFactor = 1;
-}
+        this.CELL_SIZE = 50;
+        this.dotSpeed = 0.9;
+        this.maxDotRadius = 10;
+        this.minDotRadius = 0.001;
+        this.centeringFactor = 0.1;
+        this.alignmentFactor = 0.1;
+        this.turnTowardsLightFactor = 0.001;
+        this.separationFactor = 1;
+    }
 }
 const debugSettings = new Debug_Settings();</code></pre>
-                        <p class="subtitle">I can extend the class for debug settings...</p>
+                        <p class="subtitle center-text">I can extend the class for debug settings...</p>
                     </div>
                     <div class="split-child-50">
                         <pre><code class="language-javascript">class MoreDots_Settings extends Settings {
-constructor() {
-    super();
-    this.CELL_SIZE = 20;
-    this.dotsToAdd = 3000;
-    this.dotSpeed = 0.5;
-    this.maxDotRadius = 10;
-    this.minDotRadius = 0.001;
-    this.centeringFactor = 0.1;
-    this.alignmentFactor = 1;
-    this.turnTowardsLightFactor = 0.001;
-    this.separationFactor = 1;
-    this.slownessFactor = 0.1;
-}
+    constructor() {
+        super();
+        this.CELL_SIZE = 20;
+        this.dotsToAdd = 3000;
+        this.dotSpeed = 0.5;
+        this.maxDotRadius = 10;
+        this.minDotRadius = 0.001;
+        this.centeringFactor = 0.1;
+        this.alignmentFactor = 1;
+        this.turnTowardsLightFactor = 0.001;
+        this.separationFactor = 1;
+        this.slownessFactor = 0.1;
+    }
 }</code></pre>
-                        <p class="subtitle">Or any other bundle of settings I prefer.</p>
+                        <p class="subtitle center-text">Or any other bundle of settings I prefer.</p>
                     </div>
                 </div>
                 <br />
-                <p>I just have to change the ones I want if I want to make certain packs</p>
+                <p class="center-text">I just have to change the ones I want if I want to make certain packs</p>
+            </div>
+            <div class="itd-image-processing">
+                <h3 class="page-scroll-link">Image Processing</h3>
+                <p>
+                    When I first load the image from the user input, I have to process it into a format that I can use.
+                    I use the <span class="highlight-word">canvas</span> element to draw the image onto a canvas, then I
+                    get the pixel data from the canvas.
+                </p>
+                <br />
+                <p>
+                    I create a set number of dots based on how smoothly I want the program to run (more dots = more
+                    lag). And when the dots move, I loop through each dot and set it's position and color based on the
+                    pixel data.
+                </p>
+                <pre><code class="language-javascript">function getPixelValue(xPercent, yPercent, imageData) {
+    const x = Math.floor(xPercent * imageData.width);
+    const y = Math.floor(yPercent * imageData.height);
+    const index = (y * imageData.width + x) * 4;
+
+    // return value 0 1
+    return imageData.data[index] / 255;
+}</code></pre>
+                <br />
+                <div class="split-section align-center break-early">
+                    <div class="split-child-50">
+                        <video
+                            src="./ProjectContent/ImagetoDots/pixelValueExample.mp4"
+                            autoplay="autoplay"
+                            loop="loop"
+                            muted="muted"
+                        ></video>
+                        <p class="subtitle center-text">
+                            What is the value of a pixel? <br />
+                            It's just a number between 0 and 1.
+                        </p>
+                    </div>
+                    <br />
+                    <div class="split-child-50">
+                        <video
+                            src="./ProjectContent/ImagetoDots/pixelValueMappingExample.mp4"
+                            autoplay="autoplay"
+                            loop="loop"
+                            muted="muted"
+                        ></video>
+                        <p class="subtitle center-text">
+                            I use the position of the dot to see what color it should be.
+                        </p>
+                    </div>
+                </div>
+                <br />
+                <p>
+                    I use the position of the dot to get the pixel data from the image. Then I use that pixel data to
+                    handle both the dot radius and the dot collision.
+                </p>
+                <br />
+                <pre><code class="language-javascript">function UpdateDotRadius(dot) {
+    const {
+        position,
+        radius
+    } = dot;
+    const positionPercent = {
+        x: help.Clamp(position[0] / dotsAreaCanvas.width, 0.0001, 0.9999),
+        y: help.Clamp(position[1] / dotsAreaCanvas.height, 0.0001, 0.9999),
+    };
+    const pixelValue = getPixelValue(
+        positionPercent.x,
+        positionPercent.y,
+        uploadedImageData
+    );
+
+    if (!pixelValue) return;
+
+    // 0 - darkestPixelValue
+    // 1 - brightestPixelValue
+    const valueRange = brightestPixelValue - darkestPixelValue;
+    const relativeValue = (pixelValue - darkestPixelValue) / valueRange;
+
+    const desiredRadius = help.Lerp(
+        minDotRadius,
+        maxDotRadius,
+        dotBezier.GetDotSizeBezierCurve(relativeValue)[1]
+    );
+    dot.radius += (desiredRadius - radius) * radiusChangeRate;
+
+    dot.detectionRadius = dot.radius + CELL_SIZE * (dot.moveSpeed / dotSpeed);
+    dot.collisionRadius = dot.detectionRadius * collisionRadiusMultiplier;
+}</code></pre>
+                <br />
+                <p>
+                    Dot collision however, though it may seem as if it is handled by the dot radius, is actually handled
+                    by a <span class="highlight-word">Boid Algorithm</span>. And really isn't effected by the dot
+                    radius.
+                </p>
+            </div>
+            <div class="itd-boid-algorithm">
+                <h3 class="page-scroll-link">Boid Algorithm</h3>
+                <p>
+                    The <span class="highlight-word">Boid Algorithm</span> is a way to simulate flocking behavior. It's
+                    used in a lot of games to simulate the movement of birds or fish. It's a very simple algorithm, but
+                    it can produce some very interesting results.
+                </p>
+                <br />
+                <p>
+                    The algorithm is split into 3 parts: <span class="highlight-word">Alignment</span>,
+                    <span class="highlight-word">Cohesion</span>, and <span class="highlight-word">Separation</span>.
+                    Alignment is the average direction of all the nearby dots. Cohesion is the average position of all
+                    the nearby dots. And Separation is the average distance of all the nearby dots.
+                </p>
+                <br />
+                <p>
+                    TODO - put flex 3 videos here of the separation, cohesion and alignment section from sebastian
+                    lagues videos
+                </p>
+                <br />
+                <p>I use these 3 values to calculate the <em>direction</em> of the dot based on certain weights.</p>
+
+                <div>
+                    <br />
+                    <pre><code class="language-javascript">function SteerDirection(dot, otherDots) {
+    const ratio = 1 - help.Clamp(distance2 / (detectionRadius * detectionRadius), 0, 1);
+    direction = direction.map((dir, i) => {
+        // turn away from other dot
+        dir -= dotsVector[i] * ratio * separationFactor;
+        // align with other dot
+        dir += otherDot.moveDirection[i] * alignmentFactor;
+        return dir;
+    });
+
+    // steer away from mouse
+    const mouseVector = help.VectorDirection(dot.position, canvasMousePosition);
+    direction = direction.map(
+        (dir, i) => dir - mouseVector[i] * steerFromMouseFactor * edgeBezier
+    );
+
+    // turn towards larger dots
+    const dotsVector = help.VectorDirection(dot.position, largestDot.position);
+    direction = direction.map(
+        (dir, i) => dir + dotsVector[i] * turnTowardsLightFactor
+    );
+
+    // apply wind force (-1 left to 1 right)
+    direction = direction.map((dir, i) => dir + windFactor * (i === 0 ? 1 : 0));
+
+    // final direction
+    const desiredDirection = help.VectorDirection(dot.position, [
+      xposAvg,
+      yposAvg,
+    ]);
+    direction = direction.map(
+      (dir, i) => dir + desiredDirection[i] * centeringFactor
+    );
+
+    return direction;
+}</code></pre>
+                    <p class="subtitle center-text">Simplified for viewing purposes.</p>
+
+                    <br />
+                </div>
             </div>
         </section>
 

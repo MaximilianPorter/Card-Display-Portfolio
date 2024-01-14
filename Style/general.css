@@ -87,11 +87,13 @@ img {
     max-width: 50%;
     margin: auto;
 }
+.center-text {
+    text-align: center;
+}
 .subtitle {
     font-size: 1.8rem;
     font-weight: 400;
     font-style: italic;
-    max-width: max-content;
 }
 .align-center {
     display: flex;

@@ -24,6 +24,9 @@
     .grid-2-row {
         grid-template-columns: repeat(2, 50%);
     }
+    .break-early .split-child-50 {
+        max-width: 100%;
+    }
     /* ----------------------- ABOUT ----------------------- */
     .card-page-section[data-id="about"] {
         width: 90%;
@@ -136,6 +139,9 @@
         font-size: 2.4rem;
 
         /* margin-top: 15rem !important; */
+    }
+    .split-child-50 {
+        max-width: 100%;
     }
     .grid-2-row {
         display: grid;
