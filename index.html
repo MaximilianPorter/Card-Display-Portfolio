@@ -144,6 +144,18 @@
             </p>
             <br />
             <p>If you have any questions please feel free to contact me :)</p>
+
+            <div class="line-break"></div>
+            <div class="check-out-other-stuff">
+                <p>Check out some more of this website</p>
+                <div class="twitter-plug">
+                    <p>Or check out my</p>
+                    <a target="_blank" rel="noopener" href="https://twitter.com/TheMaxPorter"
+                        ><ion-icon name="logo-twitter"></ion-icon>
+                        <span>Twitter</span>
+                    </a>
+                </div>
+            </div>
         </section>
 
         <section class="card-page-section card-page-section--hidden" data-id="corner-kingdoms">
@@ -319,14 +331,14 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                     </div>
 
                     <br />
-                    <div class="split-section break-early">
+                    <div class="split-section-reverse break-early">
+                        <img src="./ProjectContent/CornerKingdoms/oneButtonAttackDemo.gif" alt="" />
                         <p>
                             And keeping the theme of simplicity, I went with a 1 button approach to combat. Once your
                             troops are selected, you can click the "Rally Troops" button to call your selected troops
                             towards your location. Depending on where you're standing and where your troops are relative
                             to enemies, the troops will attack the enemies.
                         </p>
-                        <img src="./ProjectContent/CornerKingdoms/oneButtonAttackDemo.gif" alt="" />
                     </div>
                     <br />
                     <br />
@@ -544,7 +556,7 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                             </p>
                         </div>
                         <video
-                            class="itd-how-to-use-media"
+                            class="itd-how-to-use-media split-child-50"
                             src="./ProjectContent/ImagetoDots/uploadpicture.mp4"
                             autoplay="autoplay"
                             loop="loop"
@@ -561,7 +573,7 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                             </p>
                         </div>
                         <video
-                            class="itd-how-to-use-media"
+                            class="itd-how-to-use-media split-child-50"
                             src="./ProjectContent/ImagetoDots/messwithsettings.mp4"
                             autoplay="autoplay"
                             loop="loop"
@@ -575,7 +587,7 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                             <p>Once you're happy with the image, you can download it and use it however you'd like.</p>
                         </div>
                         <video
-                            class="itd-how-to-use-media"
+                            class="itd-how-to-use-media split-child-50"
                             src="./ProjectContent/ImagetoDots/savevideo.mp4"
                             autoplay="autoplay"
                             loop="loop"
@@ -584,55 +596,7 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                     </div>
                 </div>
             </div>
-            <div class="itd-settings">
-                <h3 class="page-scroll-link">Settings</h3>
-                <p>
-                    I use an <span class="highlight-word">object</span> to hold all the settings that can be adjusted by
-                    the user. This way, I can easily add new settings without having to change the code too much.
-                </p>
-                <br />
-                <div class="split-section align-center">
-                    <div class="split-child-50">
-                        <pre><code class="language-javascript">class Debug_Settings extends Settings {
-    constructor() {
-        super();
-        this.isDrawingDebug = true;
 
-        this.CELL_SIZE = 50;
-        this.dotSpeed = 0.9;
-        this.maxDotRadius = 10;
-        this.minDotRadius = 0.001;
-        this.centeringFactor = 0.1;
-        this.alignmentFactor = 0.1;
-        this.turnTowardsLightFactor = 0.001;
-        this.separationFactor = 1;
-    }
-}
-const debugSettings = new Debug_Settings();</code></pre>
-                        <p class="subtitle center-text">I can extend the class for debug settings...</p>
-                    </div>
-                    <div class="split-child-50">
-                        <pre><code class="language-javascript">class MoreDots_Settings extends Settings {
-    constructor() {
-        super();
-        this.CELL_SIZE = 20;
-        this.dotsToAdd = 3000;
-        this.dotSpeed = 0.5;
-        this.maxDotRadius = 10;
-        this.minDotRadius = 0.001;
-        this.centeringFactor = 0.1;
-        this.alignmentFactor = 1;
-        this.turnTowardsLightFactor = 0.001;
-        this.separationFactor = 1;
-        this.slownessFactor = 0.1;
-    }
-}</code></pre>
-                        <p class="subtitle center-text">Or any other bundle of settings I prefer.</p>
-                    </div>
-                </div>
-                <br />
-                <p class="center-text">I just have to change the ones I want if I want to make certain packs</p>
-            </div>
             <div class="itd-image-processing">
                 <h3 class="page-scroll-link">Image Processing</h3>
                 <p>
@@ -741,10 +705,26 @@ const debugSettings = new Debug_Settings();</code></pre>
                     the nearby dots. And Separation is the average distance of all the nearby dots.
                 </p>
                 <br />
-                <p>
-                    TODO - put flex 3 videos here of the separation, cohesion and alignment section from sebastian
-                    lagues videos
-                </p>
+                <div class="boids-examples split-section break-early">
+                    <video
+                        src="./ProjectContent/ImagetoDots/boids_alignmentExample.mp4"
+                        autoplay="autoplay"
+                        loop="loop"
+                        muted="muted"
+                    ></video>
+                    <video
+                        src="./ProjectContent/ImagetoDots/boids_cohesionExample.mp4"
+                        autoplay="autoplay"
+                        loop="loop"
+                        muted="muted"
+                    ></video>
+                    <video
+                        src="./ProjectContent/ImagetoDots/boids_separationExample.mp4"
+                        autoplay="autoplay"
+                        loop="loop"
+                        muted="muted"
+                    ></video>
+                </div>
                 <br />
                 <p>I use these 3 values to calculate the <em>direction</em> of the dot based on certain weights.</p>
 
@@ -789,6 +769,180 @@ const debugSettings = new Debug_Settings();</code></pre>
                     <p class="subtitle center-text">Simplified for viewing purposes.</p>
 
                     <br />
+                </div>
+            </div>
+            <div class="itd-settings">
+                <h3 class="page-scroll-link">Settings</h3>
+                <p>
+                    I use an <span class="highlight-word">object</span> to hold all the settings that can be adjusted by
+                    the user. This way, I can <span class="highlight-word">easily add new settings</span> without having
+                    to change the code too much.
+                </p>
+                <br />
+                <div class="split-section align-center">
+                    <div class="split-child-50">
+                        <pre><code class="language-javascript">class Debug_Settings extends Settings {
+    constructor() {
+        super();
+        this.isDrawingDebug = true;
+
+        this.CELL_SIZE = 50;
+        this.dotSpeed = 0.9;
+        this.maxDotRadius = 10;
+        this.minDotRadius = 0.001;
+        this.centeringFactor = 0.1;
+        this.alignmentFactor = 0.1;
+        this.turnTowardsLightFactor = 0.001;
+        this.separationFactor = 1;
+    }
+}
+const debugSettings = new Debug_Settings();</code></pre>
+                        <p class="subtitle center-text">I can extend the class for debug settings...</p>
+                    </div>
+                    <div class="split-child-50">
+                        <pre><code class="language-javascript">class MoreDots_Settings extends Settings {
+    constructor() {
+        super();
+        this.CELL_SIZE = 20;
+        this.dotsToAdd = 3000;
+        this.dotSpeed = 0.5;
+        this.maxDotRadius = 10;
+        this.minDotRadius = 0.001;
+        this.centeringFactor = 0.1;
+        this.alignmentFactor = 1;
+        this.turnTowardsLightFactor = 0.001;
+        this.separationFactor = 1;
+        this.slownessFactor = 0.1;
+    }
+}</code></pre>
+                        <p class="subtitle center-text">Or any other bundle of settings I prefer.</p>
+                    </div>
+                </div>
+                <br />
+                <p class="center-text">I just have to change the ones I want if I want to make certain packs</p>
+            </div>
+            <div class="itd-spatial-grid">
+                <h3 class="page-scroll-link">Spatial Grid</h3>
+                <p>
+                    The <span class="highlight-word">Spatial Grid</span> is a way to reduce the complexity of finding
+                    the nearest dot and <span class="highlight-word">improves performance</span>. It's a
+                    <span class="highlight-word">2D array</span> of lists. Each list contains all the dots that are in
+                    that grid cell.
+                </p>
+                <br />
+                <div>
+                    <video
+                        src="./ProjectContent/ImagetoDots/SpatialGridDotsExample.mp4"
+                        autoplay="autoplay"
+                        loop="loop"
+                        muted="muted"
+                    ></video>
+                    <p class="subtitle center-text">
+                        When looping through a large list, each dot has to check every other dot to see if it's going to
+                        collide.
+                    </p>
+                    <p class="subtitle center-text">
+                        But with a spatial grid, the dot only needs to check nearby grid cells.
+                    </p>
+                    <br />
+                    <p class="subtitle center-text">*EXPLAINED BETTER IN THE VIDEO*</p>
+                </div>
+                <br />
+                <p>
+                    When a dot moves, it checks to see if it's grid cell has changed. If it has, it removes itself from
+                    the old grid cell and adds itself to the new grid cell. So when a dot wants to find the nearest dot,
+                    it only has to check the dots in it's grid cell and the surrounding grid cells. This is
+                    <span class="highlight-word">a lot faster</span>
+                    than checking every dot on the map.
+                </p>
+                <br />
+                <br />
+                <div class="split-section break-early">
+                    <div>
+                        <p>
+                            Using a <em>cell size</em> constant, I can create a grid of cells. This
+                            <em>cell size</em> number also dictates how performant the application will be.
+                        </p>
+                        <br />
+                        <p class="subtitle">
+                            Smaller cell size = less dots to check = more performant (but less accurate)
+                            <br />
+                            Larger cell size = more dots to check = less performant (but more accurate)
+                        </p>
+                    </div>
+                    <pre><code class="language-javascript">function createGrid(width, height, cellSize) {
+    const grid = {};
+    for (let i = 0; i < width / cellSize; i++) {
+        for (let j = 0; j < height / cellSize; j++) {
+        grid[`${i},${j}`] = [];
+        }
+    }
+    return grid;
+}</code></pre>
+                </div>
+                <br />
+                <br />
+                <div class="split-section-reverse break-early">
+                    <p>
+                        I can get the neighboring cells by adding or subtracting 1 from the x and y values. This way, I
+                        can get the 8 cells surrounding the current cell.
+                    </p>
+                    <pre><code class="language-javascript">function getNeighboringCells(grid, gridPosition, cellSize, canvas) {
+    const neighboringCells = [
+        `${gridPosition.x},${gridPosition.y}`,
+        `${gridPosition.x},${gridPosition.y - 1}`, // this can be undefined
+        `${gridPosition.x},${gridPosition.y + 1}`, // this can be undefined
+        `${gridPosition.x - 1},${gridPosition.y}`, // this can be undefined
+        `${gridPosition.x - 1},${gridPosition.y - 1}`,
+        `${gridPosition.x - 1},${gridPosition.y + 1}`,
+        `${gridPosition.x + 1},${gridPosition.y}`, // this can be undefined
+        `${gridPosition.x + 1},${gridPosition.y - 1}`,
+        `${gridPosition.x + 1},${gridPosition.y + 1}`,
+
+        // plus some other math to check for dots looping around the canvas
+        // ...
+    ];
+    
+    return neighboringCells;
+}</code></pre>
+                </div>
+                <br />
+                <br />
+                <div class="split-section break-early">
+                    <p>Using that information, I can get all the dots in the neighboring cells.</p>
+                    <pre><code class="language-javascript">function GetDotsInNeighboringCells(dot) {
+    const { gridPosition } = dot;
+    const neighboringCells = getNeighboringCells(
+        grid,
+        gridPosition,
+        CELL_SIZE,
+        dotsAreaCanvas
+    );
+    
+    const dotsInNeighboringCells = [];
+    
+    for (let i = 0; i < neighboringCells.length; i++) {
+        if (grid[neighboringCells[i]] === undefined) 
+            continue;
+        const cell = neighboringCells[i];
+        const cellDots = grid[cell];
+        cellDots.forEach((dot) => {
+        dotsInNeighboringCells.push(dot);
+        });
+    }
+    
+    return dotsInNeighboringCells;
+}</code></pre>
+                </div>
+            </div>
+            <div>
+                <div class="itd-final-note">
+                    <p>
+                        <a href="https://imagetodots.netlify.app/" target="_blank" rel="noopener noreferrer">
+                            ---> Watch the video <---
+                        </a>
+                    </p>
+                    <p>for a cooler explanation</p>
                 </div>
             </div>
         </section>

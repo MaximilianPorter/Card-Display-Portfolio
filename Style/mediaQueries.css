@@ -76,10 +76,16 @@
     .itd-how-to-use-section h4 {
         font-size: 2.4rem;
     }
+    .boids-examples {
+        display: flex;
+    }
 }
 
 /* ------------------------------------------------------------------------------------------------- */
 @media screen and (width < 800px) {
+    body {
+        margin-top: 8rem;
+    }
     header {
         flex-direction: column;
         padding: 1rem 0;
@@ -148,6 +154,10 @@
         grid-template-columns: 100%;
     }
 
+    pre code {
+        font-size: 1.2rem;
+    }
+
     /* ----------------------- ABOUT ----------------------- */
     .card-page-section[data-id="about"] {
         font-size: 1.6rem;
@@ -199,18 +209,21 @@
     }
 
     /* ----------------------- IMAGE TO DOTS ----------------------- */
+    .card-page-section[data-id="image-to-dots"] p {
+        font-size: 1.6rem;
+    }
     .card-page-section[data-id="image-to-dots"] h3 {
         font-size: 2.4rem;
     }
     .itd-title-section {
         font-size: 4.8rem;
     }
-    .itd-about {
+    /* .itd-about {
         font-size: 1.6rem;
     }
     .itd-watch-development {
         font-size: 1.6rem;
-    }
+    } */
     .itd-how-to-use-media {
         border-radius: 40px;
         max-width: 100%;

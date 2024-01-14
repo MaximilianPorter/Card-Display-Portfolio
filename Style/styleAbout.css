@@ -9,3 +9,20 @@
 
     text-align: center;
 }
+.check-out-other-stuff {
+    font-size: 2.4rem;
+    font-weight: 400;
+    text-align: center;
+}
+.twitter-plug {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.twitter-plug a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}

@@ -62,7 +62,8 @@ img {
     align-items: center;
     gap: 3rem;
 }
-.grid-2-row {
+.grid-2-row,
+.grid-2-row-reverse {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
@@ -96,7 +97,6 @@ img {
     font-style: italic;
 }
 .align-center {
-    display: flex;
     justify-content: center;
     justify-items: center;
     align-items: center;

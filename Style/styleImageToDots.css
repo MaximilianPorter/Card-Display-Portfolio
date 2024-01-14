@@ -1,3 +1,7 @@
+:root {
+    --itd-border-radius: 40px;
+}
+
 .card-page-section[data-id="image-to-dots"] {
     margin: 0 10rem;
     font-size: 2.4rem;
@@ -10,8 +14,9 @@
 }
 
 .card-page-section[data-id="image-to-dots"] video {
+    display: block;
     width: 100%;
-    border-radius: 50px;
+    border-radius: var(--itd-border-radius);
     margin-bottom: 2rem;
 }
 
@@ -33,7 +38,7 @@
     width: 80%;
     height: 400px;
     margin: auto;
-    border-radius: 50px;
+    border-radius: var(--itd-border-radius);
 
     overflow: hidden;
 
@@ -84,7 +89,7 @@
 .itd-iframe {
     width: 100%;
     height: 70vh;
-    border-radius: 40px;
+    border-radius: var(--itd-border-radius);
 }
 
 .itd-watch-development {
@@ -115,6 +120,19 @@
 }
 
 .itd-how-to-use-media {
-    border-radius: 50px;
-    max-width: 50%;
+    border-radius: var(--itd-border-radius);
+    /* max-width: 50% !important; */
+}
+
+/* --------------------- BOIDS --------------------- */
+.boids-examples {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* --------------------- FINAL --------------------- */
+.itd-final-note {
+    margin-top: 5rem;
+    font-size: 3.6rem;
+    text-align: center;
 }
