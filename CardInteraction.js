@@ -17,7 +17,7 @@ import GetIconMarkup from "./ProjectIconHandler.js";
     const cardObjectsInHand = [];
 
     const positionSettingsNormal = {
-        handHeight: 50, // how high the hand is from the bottom of the screen
+        handHeight: 50, // (50) how high the hand is from the bottom of the screen
         handRotationCurve: 20, // how much each card is rotated from the center of the hand
         cardOffsetHeight: 50, // how much each card is offset from the center of the hand
         cardHoverOffsetHeight: 100, // how much each card is raised when hovered
@@ -71,11 +71,12 @@ import GetIconMarkup from "./ProjectIconHandler.js";
 
             const cardMarkup = `
         <div class="card" data-id="${cardId}" data-type="${typeText}">
+            <img class="card-glow-img" src="${cardImagePath}" alt="example card" />
             <div class="card-details">
                 ${iconMarkup}
                 <p class="card-name">${cardName}</p>
             </div>
-            <img src="${cardImagePath}" alt="example card" />
+            <img class="card-img" src="${cardImagePath}" alt="example card" />
             <p class="card-type">${typeText}</p>
         </div>
         `;
