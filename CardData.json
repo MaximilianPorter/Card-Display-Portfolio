@@ -1,11 +1,5 @@
 [
     {
-        "name": "About",
-        "type": "Info",
-        "id": "about",
-        "cardImagePath": "/CardImages/card_about.png"
-    },
-    {
         "name": "Corner Kingdoms",
         "type": "Game",
         "id": "corner-kingdoms",
@@ -22,5 +16,11 @@
         "type": "Web Application",
         "id": "image-to-dots",
         "cardImagePath": "/CardImages/card_imagetodots.png"
+    },
+    {
+        "name": "About",
+        "type": "Info",
+        "id": "about",
+        "cardImagePath": "/CardImages/card_about.png"
     }
 ]
