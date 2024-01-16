@@ -61,6 +61,14 @@
     opacity: 0.3;
 }
 
+.more-scroll-down-chevron {
+    position: absolute;
+    bottom: -10rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 6.4rem;
+}
+
 /* --------------- SCROLLER --------------- */
 .scroller {
     display: flex;
