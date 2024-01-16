@@ -366,6 +366,7 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                         enemy, it only has to check the units in it's grid cell and the surrounding grid cells. This is
                         a lot faster than checking every unit on the map.
                     </p>
+                    <br />
                     <pre><code class="language-csharp">private void CellFindNearestEnemy()
 {
     int cellsOutToCheck = Mathf.CeilToInt(lookRangeWithHeight / UnitCellManager.cellWidth);
@@ -378,7 +379,7 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
 
     SetNearestEnemy(ReturnClosestEnemy(cellsAroundMe));
 }</code></pre>
-
+                    <br />
                     <p>
                         This change severely reduced the complexity of finding the nearest enemy . This is a huge
                         improvement, and it allows for a lot more units to be on the screen at once.
