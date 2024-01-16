@@ -117,3 +117,132 @@
     margin: auto;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
+.notable-projects-holder {
+    height: 30rem;
+    max-width: 95%;
+    margin: 1rem auto;
+    justify-content: center;
+    gap: 5rem;
+}
+.notable-project {
+    position: relative;
+    border-radius: 20px;
+    height: 100%;
+    width: 50rem;
+    max-width: 100%;
+    overflow: hidden;
+    font-size: 1.6rem;
+
+    /* cursor: pointer; */
+    transition: width 0.5s ease, height 0.5s ease;
+}
+.notable-project-selected {
+    cursor: unset;
+    width: 100%;
+}
+.notable-project-not-selected {
+    width: 10%;
+}
+
+.notable-project-header-area {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    max-width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 1rem;
+
+    font-size: 2.4rem;
+    font-family: "Limelight", sans-serif;
+
+    transition: all 0.5s ease;
+}
+.notable-project-not-selected .notable-project-header-area {
+    display: none;
+}
+
+.notable-project-selected .notable-project-header-area,
+.notable-project:hover .notable-project-header-area {
+    top: 1rem;
+    left: 1rem;
+    transform: translate(0, 0);
+}
+
+.notable-project-header {
+    max-width: max-content;
+}
+
+.notable-project-description {
+    /* display: none; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    font-size: inherit;
+    height: 100%;
+    width: 95%;
+
+    margin: auto;
+    margin-top: 5rem;
+
+    transition: all 0.5s ease;
+}
+.notable-project:hover .notable-project-description {
+    display: block;
+    transform: translate(-50%, -50%);
+}
+.notable-project-selected .notable-project-description,
+.notable-project-not-selected .notable-project-description {
+    opacity: 0;
+}
+
+.notable-project-background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+
+    filter: blur(10px);
+    transition: filter 0.5s ease;
+}
+
+.notable-project:hover .notable-project-background-img {
+    filter: blur(0px) brightness(0.3);
+}
+
+.notable-project-extra {
+    display: none;
+    transition: all 0.5s ease;
+    transform: translate(0, 100%);
+    font-size: inherit;
+
+    margin: 1rem;
+    margin-top: 5rem;
+}
+.notable-project-selected .notable-project-extra {
+    display: block;
+    transform: translate(0, 0);
+}
+
+.notable-project-extra-img {
+    display: inline-block;
+    max-height: 200px;
+}
+
+.notable-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-size: 2.4rem;
+}

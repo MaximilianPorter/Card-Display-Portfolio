@@ -195,3 +195,32 @@ function DuplicateContentInRow(row) {
     row.innerHTML += rowContent;
 }
 //#endregion
+
+//#region Notable Projects (more-games section)
+// const notableProjects = document.querySelectorAll(".notable-project");
+
+// notableProjects.forEach((project) => {
+//     project.addEventListener("click", () => {
+//         if (project.classList.contains("notable-project-selected")) {
+//             NotableProject_Deselect();
+//         } else {
+//             NotableProject_Select(project);
+//         }
+//     });
+// });
+
+// function NotableProject_Select(project) {
+//     notableProjects.forEach((p) => {
+//         p.classList.add("notable-project-not-selected");
+//         p.classList.remove("notable-project-selected");
+//     });
+//     project.classList.remove("notable-project-not-selected");
+//     project.classList.add("notable-project-selected");
+// }
+// function NotableProject_Deselect() {
+//     notableProjects.forEach((p) => {
+//         p.classList.remove("notable-project-not-selected");
+//         p.classList.remove("notable-project-selected");
+//     });
+// }
+//#endregion
