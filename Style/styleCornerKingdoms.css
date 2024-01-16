@@ -37,6 +37,9 @@
     padding: 2rem;
     border-radius: calc(var(--ck-image-border-radius) + 10px);
 }
+.ck-features-list ul {
+    margin: auto;
+}
 .ck-features-list ul li {
     margin-left: 3rem;
     line-height: 5rem;

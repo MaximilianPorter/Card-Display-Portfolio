@@ -2,4 +2,4 @@
 -   ✅ change font to inter
 -   ⬜ style some pages with better backgrounds
 -   ⬜ optimize some larger images with imgset options
--   ⬜ center bullet points on corner-kingdoms/features section
+-   ✅ center bullet points on corner-kingdoms/features section
