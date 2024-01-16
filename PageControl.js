@@ -163,3 +163,35 @@ async function GetCardDataFromJSON() {
 }
 
 //#endregion
+
+//#region SCROLLER
+const scrollerRows = document.querySelectorAll(".scroller-row");
+const scrollingImgsFolder = `./ProjectContent/More/ScrollingImages/`;
+
+const moreSectionScrollerRows = document.querySelectorAll(".more-scroller-images");
+
+moreSectionScrollerRows.forEach((row) => {
+    const imagesInFolder = 44;
+    for (let i = 0; i < 4; i++) {
+        const imgSrc = GetRandomImgSrcFromFolder(scrollingImgsFolder, imagesInFolder);
+        const imgMarkup = `<img src="${imgSrc}" alt="scrolling image from video" class="scroller-item" />`;
+        row.innerHTML += imgMarkup;
+    }
+});
+
+scrollerRows.forEach((row) => {
+    DuplicateContentInRow(row);
+});
+
+function GetRandomImgSrcFromFolder(folder, imagesInFolder) {
+    // example: 0001.jpg, 0039.jpg, 0044.jpg
+    const randomImageNumber = Math.floor(Math.random() * imagesInFolder) + 1;
+    const imgSrc = `${folder}${randomImageNumber.toString().padStart(4, "0")}.jpg`;
+    return imgSrc;
+}
+
+function DuplicateContentInRow(row) {
+    const rowContent = row.innerHTML;
+    row.innerHTML += rowContent;
+}
+//#endregion

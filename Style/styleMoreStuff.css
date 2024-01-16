@@ -1,0 +1,119 @@
+.card-page-section[data-id="more-games"] {
+    padding: 0rem;
+}
+.more-showcase-area {
+    position: relative;
+    height: 80vh;
+
+    background-position: center;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+    background-size: 30px 30px;
+
+    border-top: 2px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+
+    margin-bottom: 5rem;
+}
+
+.more-stuff-header-text {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translate(0, -50%);
+    font-size: 8.6rem;
+    font-weight: 1000;
+    letter-spacing: 2rem;
+    mix-blend-mode: difference;
+}
+
+.more-showcase-video-area {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    height: 50%;
+    z-index: 2;
+    /* margin-top: 10rem; */
+}
+.more-showcase-video,
+.more-showcase-video-underlay {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50px;
+}
+.more-showcase-video {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.more-showcase-video-underlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: -1;
+    filter: blur(100px) brightness(1.5);
+    opacity: 0.3;
+}
+
+/* --------------- SCROLLER --------------- */
+.scroller {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    overflow: hidden;
+
+    height: 100%;
+
+    -webkit-mask-: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
+    mask: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
+}
+.scroller-row {
+    padding-left: 20rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    gap: 20rem;
+
+    width: max-content;
+    height: 20%;
+
+    animation: scroll var(--scroll-duration, 20s) var(--scroll_direction, forwards) linear infinite;
+}
+.scroller-row[data-direction="right"] {
+    --scroll_direction: reverse;
+}
+.scroller-row[data-duration="short"] {
+    --scroll-duration: 10s;
+}
+.scroller-row[data-duration="medium"] {
+    --scroll-duration: 20s;
+}
+.scroller-row[data-duration="long"] {
+    --scroll-duration: 30s;
+}
+.scroller-item {
+    border-radius: 10px;
+    height: 100%;
+    opacity: 0.5;
+    filter: grayscale(1) blur(5px);
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* --------------- NOTABLE PROJECTS --------------- */
+.notable-projects-header {
+    font-size: 3.6rem;
+    text-align: center;
+    max-width: 50%;
+    margin: auto;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}

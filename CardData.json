@@ -6,7 +6,7 @@
         "cardImagePath": "/CardImages/card_cornerkingdoms.png"
     },
     {
-        "name": "More Games",
+        "name": "More",
         "type": "Game",
         "id": "more-games",
         "cardImagePath": "/CardImages/card_moregames.png"

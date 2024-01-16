@@ -38,6 +38,7 @@
         <link rel="stylesheet" href="./Style/styleCornerKingdoms.css" />
         <link rel="stylesheet" href="./Style/styleImageToDots.css" />
         <link rel="stylesheet" href="./Style/styleAbout.css" />
+        <link rel="stylesheet" href="./Style/styleMoreStuff.css" />
 
         <link rel="stylesheet" href="./Style/mediaQueries.css" />
         <script type="module" src="./CardInteraction.js"></script>
@@ -491,11 +492,36 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
         </section>
 
         <section class="card-page-section card-page-section--hidden" data-id="more-games">
-            <h2>I've made lot of games...</h2>
-            <p>
-                Here's a showcase of some projects that were completed, some that weren't, and some that are still in
-                development.
-            </p>
+            <div class="more-showcase-area">
+                <div class="more-showcase-video-area">
+                    <p class="more-stuff-header-text">
+                        SOME <br />
+                        OTHER <br />STUFF
+                    </p>
+                    <video
+                        class="more-showcase-video"
+                        src="./ProjectContent/More/allMyProjectsMontageBetterQuality.mp4"
+                        autoplay="autoplay"
+                        loop="loop"
+                        muted="muted"
+                    ></video>
+                    <video
+                        class="more-showcase-video-underlay"
+                        src="./ProjectContent/More/allMyProjectsMontageBetterQuality.mp4"
+                        autoplay="autoplay"
+                        loop="loop"
+                        muted="muted"
+                    ></video>
+                </div>
+                <div class="scroller">
+                    <div class="scroller-row more-scroller-images" data-duration="long"></div>
+                    <div class="scroller-row more-scroller-images" data-duration="medium" data-direction="right"></div>
+                    <div class="scroller-row more-scroller-images" data-duration="medium"></div>
+                </div>
+            </div>
+            <div class="notable-projects">
+                <h4 class="notable-projects-header">Notable Projects</h4>
+            </div>
         </section>
 
         <section class="card-page-section card-page-section--hidden" data-id="image-to-dots">
