@@ -26,7 +26,7 @@ html {
 }
 
 body {
-    font-family: "Source Code Pro", monospace;
+    font-family: "Inter", sans-serif;
     background-color: var(--background-color);
     color: #fff;
     font-size: 1.6rem;
@@ -43,6 +43,7 @@ body {
 /*----------------------- HEADER AREA ----------------------- */
 
 header {
+    font-family: "Source Code Pro", monospace;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -423,6 +424,7 @@ header {
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
+    font-family: "Source Code Pro", monospace;
 
     display: block;
     text-align: center;
@@ -440,6 +442,7 @@ header {
 }
 
 .card-container-overlay {
+    font-family: "Source Code Pro", monospace;
     pointer-events: none;
     position: fixed;
     top: 0;
