@@ -18,8 +18,10 @@
 .more-stuff-header-text {
     position: absolute;
     top: 50%;
-    left: 1rem;
-    transform: translate(0, -50%);
+    left: 50%;
+    transform: translate(-100%, -50%);
+    margin-left: 5rem;
+    z-index: 1;
     font-size: 8.6rem;
     font-weight: 1000;
     letter-spacing: 2rem;
@@ -33,12 +35,18 @@
     transform: translate(-50%, -50%);
     display: block;
     height: 50%;
+    width: 100%;
     z-index: 2;
     /* margin-top: 10rem; */
 }
 .more-showcase-video,
 .more-showcase-video-underlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     height: 100%;
+    max-width: 100%;
     object-fit: cover;
     object-position: center;
     border-radius: 50px;
@@ -48,10 +56,6 @@
 }
 
 .more-showcase-video-underlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-
     z-index: -1;
     filter: blur(100px) brightness(1.5);
     opacity: 0.3;
@@ -118,30 +122,42 @@
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
 .notable-projects-holder {
-    height: 30rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    height: max-content;
     max-width: 95%;
-    margin: 1rem auto;
+    margin: 3rem auto;
     justify-content: center;
     gap: 5rem;
 }
 .notable-project {
     position: relative;
     border-radius: 20px;
-    height: 100%;
-    width: 50rem;
+    height: 40rem;
+    width: 100%;
     max-width: 100%;
     overflow: hidden;
     font-size: 1.6rem;
 
+    outline: 2px solid rgba(255, 255, 255, 0.2);
+
     /* cursor: pointer; */
     transition: width 0.5s ease, height 0.5s ease;
 }
+
 .notable-project-selected {
     cursor: unset;
     width: 100%;
 }
 .notable-project-not-selected {
     width: 10%;
+}
+
+.notable-details {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
 }
 
 .notable-project-header-area {
@@ -152,13 +168,13 @@
     width: max-content;
     max-width: 100%;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 
     gap: 1rem;
 
     font-size: 2.4rem;
-    font-family: "Limelight", sans-serif;
 
     transition: all 0.5s ease;
 }
@@ -167,14 +183,26 @@
 }
 
 .notable-project-selected .notable-project-header-area,
-.notable-project:hover .notable-project-header-area {
+.notable-project:hover .notable-project-header-area,
+.notable-project:active .notable-project-header-area {
     top: 1rem;
     left: 1rem;
     transform: translate(0, 0);
 }
 
 .notable-project-header {
+    font-family: "Limelight", sans-serif;
     max-width: max-content;
+}
+.notable-application-type {
+    font-size: 1.6rem;
+    font-style: italic;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+.notable-project:hover .notable-application-type,
+.notable-project:active .notable-application-type {
+    opacity: 0;
 }
 
 .notable-project-description {
@@ -192,7 +220,8 @@
 
     transition: all 0.5s ease;
 }
-.notable-project:hover .notable-project-description {
+.notable-project:hover .notable-project-description,
+.notable-project:active .notable-project-description {
     display: block;
     transform: translate(-50%, -50%);
 }
@@ -211,11 +240,12 @@
     object-position: center;
     z-index: -1;
 
-    filter: blur(10px);
+    filter: blur(10px) brightness(0.3);
     transition: filter 0.5s ease;
 }
 
-.notable-project:hover .notable-project-background-img {
+.notable-project:hover .notable-project-background-img,
+.notable-project:active .notable-project-background-img {
     filter: blur(0px) brightness(0.3);
 }
 
