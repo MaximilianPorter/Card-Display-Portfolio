@@ -26,3 +26,8 @@
     align-items: center;
     gap: 1rem;
 }
+
+.age-timer {
+    width: 10rem;
+    display: inline-block;
+}

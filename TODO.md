@@ -1,5 +1,5 @@
--   ⬜ Add alt text to all images/videos
+-   ✅ Add alt text to all images/videos
 -   ✅ change font to inter
 -   ⬜ style some pages with better backgrounds
--   ⬜ optimize some larger images with imgset options
+-   ✅ optimize some larger images with size options
 -   ✅ center bullet points on corner-kingdoms/features section
