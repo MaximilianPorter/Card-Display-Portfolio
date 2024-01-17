@@ -19,8 +19,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    margin-left: -13rem;
+    transform: translate(-70%, -50%);
     z-index: 1;
     font-size: 8.6rem;
     font-weight: 1000;
