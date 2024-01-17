@@ -3,24 +3,28 @@
         "name": "Corner Kingdoms",
         "type": "Game",
         "id": "corner-kingdoms",
-        "cardImagePath": "/CardImages/card_cornerkingdoms.png"
+        "cardImagePath": "/CardImages/card_cornerkingdoms.png",
+        "cardImagePathLowRes": "/CardImages/card_cornerkingdoms_lowres.jpg"
     },
     {
         "name": "More",
         "type": "Game",
         "id": "more-games",
-        "cardImagePath": "/CardImages/card_moregames.png"
+        "cardImagePath": "/CardImages/card_moregames.png",
+        "cardImagePathLowRes": "/CardImages/card_moregames_lowres.jpg"
     },
     {
         "name": "Image to Dots",
         "type": "Web Application",
         "id": "image-to-dots",
-        "cardImagePath": "/CardImages/card_imagetodots.png"
+        "cardImagePath": "/CardImages/card_imagetodots.png",
+        "cardImagePathLowRes": "/CardImages/card_imagetodots_lowres.jpg"
     },
     {
         "name": "About",
         "type": "Info",
         "id": "about",
-        "cardImagePath": "/CardImages/card_about.png"
+        "cardImagePath": "/CardImages/card_about.png",
+        "cardImagePathLowRes": ""
     }
 ]

@@ -508,20 +508,18 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                         SOME <br />
                         OTHER <br />STUFF
                     </p>
-                    <video
-                        class="more-showcase-video"
-                        src="./ProjectContent/More/allMyProjectsMontageBetterQuality.mp4"
-                        autoplay="autoplay"
-                        loop="loop"
-                        muted="muted"
-                    ></video>
+                    <video class="more-showcase-video" autoplay="autoplay" loop="loop" muted="muted" playsinline>
+                        <source src="./ProjectContent/More/allMyProjectsMontage.mp4" type="video/mp4" />
+                    </video>
                     <video
                         class="more-showcase-video-underlay"
-                        src="./ProjectContent/More/allMyProjectsMontageBetterQuality.mp4"
                         autoplay="autoplay"
                         loop="loop"
                         muted="muted"
-                    ></video>
+                        playsinline
+                    >
+                        <source src="./ProjectContent/More/allMyProjectsMontage_lowres.mp4" type="video/mp4" />
+                    </video>
                     <ion-icon class="more-scroll-down-chevron" name="chevron-down-outline"></ion-icon>
                 </div>
                 <div class="scroller">
@@ -711,12 +709,9 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
         <section class="card-page-section card-page-section--hidden" data-id="image-to-dots">
             <div class="itd-title-section">
                 <h2>Image to Dots</h2>
-                <video
-                    src="./ProjectContent/ImagetoDots/dots-short-demo.mp4"
-                    autoplay="autoplay"
-                    loop="loop"
-                    muted="muted"
-                ></video>
+                <video autoplay="autoplay" loop="loop" muted="muted" playsinline>
+                    <source src="./ProjectContent/ImagetoDots/dots-short-demo-lowres.mp4" type="video/mp4" />
+                </video>
             </div>
             <p class="itd-about">
                 Image to Dots is a <span class="highlight-word">Web Application</span> that converts an image into a
@@ -768,10 +763,11 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                         </div>
                         <video
                             class="itd-how-to-use-media split-child-50"
-                            src="./ProjectContent/ImagetoDots/uploadpicture.mp4"
+                            data-src="./ProjectContent/ImagetoDots/uploadpicture.mp4"
                             autoplay="autoplay"
                             loop="loop"
                             muted="muted"
+                            playsinline
                         ></video>
                     </div>
                     <!-- 2. mess with the settings -->
@@ -785,10 +781,11 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                         </div>
                         <video
                             class="itd-how-to-use-media split-child-50"
-                            src="./ProjectContent/ImagetoDots/messwithsettings.mp4"
+                            data-src="./ProjectContent/ImagetoDots/messwithsettings.mp4"
                             autoplay="autoplay"
                             loop="loop"
                             muted="muted"
+                            playsinline
                         ></video>
                     </div>
                     <!-- 3. download the image -->
@@ -799,10 +796,11 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                         </div>
                         <video
                             class="itd-how-to-use-media split-child-50"
-                            src="./ProjectContent/ImagetoDots/savevideo.mp4"
+                            data-src="./ProjectContent/ImagetoDots/savevideo.mp4"
                             autoplay="autoplay"
                             loop="loop"
                             muted="muted"
+                            playsinline
                         ></video>
                     </div>
                 </div>
@@ -833,10 +831,11 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                 <div class="split-section align-center break-early">
                     <div class="split-child-50">
                         <video
-                            src="./ProjectContent/ImagetoDots/pixelValueExample.mp4"
+                            data-src="./ProjectContent/ImagetoDots/pixelValueExample.mp4"
                             autoplay="autoplay"
                             loop="loop"
                             muted="muted"
+                            playsinline
                         ></video>
                         <p class="subtitle center-text">
                             What is the value of a pixel? <br />
@@ -846,10 +845,11 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                     <br />
                     <div class="split-child-50">
                         <video
-                            src="./ProjectContent/ImagetoDots/pixelValueMappingExample.mp4"
+                            data-src="./ProjectContent/ImagetoDots/pixelValueMappingExample.mp4"
                             autoplay="autoplay"
                             loop="loop"
                             muted="muted"
+                            playsinline
                         ></video>
                         <p class="subtitle center-text">
                             I use the position of the dot to see what color it should be.
@@ -918,22 +918,25 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                 <br />
                 <div class="boids-examples split-section break-early">
                     <video
-                        src="./ProjectContent/ImagetoDots/boids_alignmentExample.mp4"
+                        data-src="./ProjectContent/ImagetoDots/boids_alignmentExample.mp4"
                         autoplay="autoplay"
                         loop="loop"
                         muted="muted"
+                        playsinline
                     ></video>
                     <video
-                        src="./ProjectContent/ImagetoDots/boids_cohesionExample.mp4"
+                        data-src="./ProjectContent/ImagetoDots/boids_cohesionExample.mp4"
                         autoplay="autoplay"
                         loop="loop"
                         muted="muted"
+                        playsinline
                     ></video>
                     <video
-                        src="./ProjectContent/ImagetoDots/boids_separationExample.mp4"
+                        data-src="./ProjectContent/ImagetoDots/boids_separationExample.mp4"
                         autoplay="autoplay"
                         loop="loop"
                         muted="muted"
+                        playsinline
                     ></video>
                 </div>
                 <br />
@@ -1043,10 +1046,11 @@ const debugSettings = new Debug_Settings();</code></pre>
                 <br />
                 <div>
                     <video
-                        src="./ProjectContent/ImagetoDots/SpatialGridDotsExample.mp4"
+                        data-src="./ProjectContent/ImagetoDots/SpatialGridDotsExample.mp4"
                         autoplay="autoplay"
                         loop="loop"
                         muted="muted"
+                        playsinline
                     ></video>
                     <p class="subtitle center-text">
                         When looping through a large list, each dot has to check every other dot to see if it's going to

@@ -18,6 +18,7 @@ import activeCardContainer from "./ActiveCardContainer.js";
             const cardId = cardData.id;
             const cardName = cardData.name;
             const cardImagePath = cardData.cardImagePath;
+            const cardImagePathLowRes = cardData.cardImagePathLowRes;
 
             const iconMarkup = GetIconMarkup(cardData, cardData.type);
             const typeText = cardData.type;
@@ -32,7 +33,9 @@ import activeCardContainer from "./ActiveCardContainer.js";
             ${iconMarkup}
             <p class="mobile-card-name">${cardName}</p>
           </div>
-          <img src="${cardImagePath}" alt="example card" />
+          <img src="${
+              cardImagePathLowRes !== "" ? cardImagePathLowRes : cardImagePath
+          }" alt="image for section ${cardId}" />
         </button>
         `;
 

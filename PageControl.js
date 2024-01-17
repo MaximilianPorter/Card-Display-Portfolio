@@ -224,3 +224,60 @@ function DuplicateContentInRow(row) {
 //     });
 // }
 //#endregion
+
+//#region Lazy Load videos/imgs
+
+const videos = document.querySelectorAll("video[data-src]");
+let options = {
+    rootMargin: "1000px",
+    threshold: 0,
+};
+const videoObserver = new IntersectionObserver((entries, videoObserver) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            console.log(`video ${entry.target.dataset.src} is intersecting`);
+            const video = entry.target;
+            const videoSrc = video.dataset.src;
+            video.src = videoSrc;
+            videoObserver.unobserve(video);
+        }
+    });
+}, options);
+
+videos.forEach((video) => {
+    videoObserver.observe(video);
+});
+
+const imgs = document.querySelectorAll("img");
+const imgOptions = {
+    rootMargin: "1000px",
+    threshold: 0,
+};
+const originalSrcs = [];
+imgs.forEach((img) => {
+    if (!img.closest(".card-page-section")) return;
+    originalSrcs.push({
+        img: img,
+        src: img.src,
+    });
+    img.src = "";
+});
+const imgObserver = new IntersectionObserver((entries, imgObserver) => {
+    entries.forEach((entry) => {
+        const img = entry.target;
+
+        const closestCardPageSection = entry.target.closest(".card-page-section:not(.card-page-section--hidden)");
+        if (!closestCardPageSection) return;
+        if (entry.isIntersecting) {
+            console.log(`img ${entry.target.src} is intersecting`);
+            img.src = originalSrcs.find((src) => src.img === img).src;
+            imgObserver.unobserve(img);
+        }
+    });
+}, imgOptions);
+
+imgs.forEach((img) => {
+    imgObserver.observe(img);
+});
+
+//#endregion

@@ -65,18 +65,32 @@ import GetIconMarkup from "./ProjectIconHandler.js";
             const cardId = cardData.id;
             const cardName = cardData.name;
             const cardImagePath = cardData.cardImagePath;
+            const cardImagePathLowRes = cardData.cardImagePathLowRes;
 
             const iconMarkup = GetIconMarkup(cardData, cardData.type);
             const typeText = cardData.type;
 
             const cardMarkup = `
         <div class="card" data-id="${cardId}" data-type="${typeText}">
-            <img class="card-glow-img" src="${cardImagePath}" alt="example card" />
+            <img 
+            class="card-glow-img" 
+            src="${cardImagePathLowRes}" 
+            alt="example card" 
+            />
             <div class="card-details">
                 ${iconMarkup}
                 <p class="card-name">${cardName}</p>
             </div>
-            <img class="card-img" src="${cardImagePath}" alt="example card" />
+            <img 
+            class="card-img" 
+            src="${cardImagePath}" 
+            alt="example card"
+            style="
+                background-image: url('${cardImagePathLowRes}');
+                background-size: cover;
+                background-position: center;
+                "
+            />
             <p class="card-type">${typeText}</p>
         </div>
         `;
