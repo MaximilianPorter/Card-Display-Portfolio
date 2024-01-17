@@ -75,7 +75,7 @@ import GetIconMarkup from "./ProjectIconHandler.js";
             <img 
             class="card-glow-img" 
             src="${cardImagePathLowRes}" 
-            alt="example card" 
+            alt="blurred glow background image for the card with an id ${cardId}"
             />
             <div class="card-details">
                 ${iconMarkup}
@@ -84,7 +84,7 @@ import GetIconMarkup from "./ProjectIconHandler.js";
             <img 
             class="card-img" 
             src="${cardImagePath}" 
-            alt="example card"
+            alt="background image for the card with an id ${cardId}"
             style="
                 background-image: url('${cardImagePathLowRes}');
                 background-size: cover;
