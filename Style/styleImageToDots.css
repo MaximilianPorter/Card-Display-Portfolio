@@ -136,3 +136,10 @@
     font-size: 3.6rem;
     text-align: center;
 }
+
+/* --------------------- SPATIAL GRID --------------------- */
+.spatial-grid-video {
+    display: block;
+    margin: auto;
+    max-width: 50%;
+}

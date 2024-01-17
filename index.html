@@ -194,7 +194,7 @@
                 <div class="ck-features-list-right">
                     <img
                         class="ck-features-screenshot"
-                        src="/ProjectContent/CornerKingdoms/cornerkingdomssplitscreen.png"
+                        src="/ProjectContent/CornerKingdoms/cornerkingdomssplitscreen.jpg"
                         alt="splitscreen screenshot"
                     />
                     <a
@@ -423,7 +423,7 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                             shows up when the player is queuing units.
                         </p>
                         <img
-                            src="./ProjectContent/CornerKingdoms/baseUI.png"
+                            src="./ProjectContent/CornerKingdoms/baseUI.jpg"
                             alt="how the normal ui looks in Corner Kingdoms"
                         />
                     </div>
@@ -436,15 +436,15 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                                 src="./ProjectContent/CornerKingdoms/queuedUnits.png"
                                 alt="the parts of the ui added for when units are queued"
                             />
-                            <p class="subtitle margin-auto">UI shows up for when units are queued</p>
+                            <p class="subtitle center-text margin-auto">UI shows up for when units are queued</p>
                         </div>
                         <div>
                             <img
                                 class="margin-auto"
-                                src="./ProjectContent/CornerKingdoms/selectedUnits.png"
+                                src="./ProjectContent/CornerKingdoms/selectedUnits.jpg"
                                 alt="the parts of the ui added for when units are selected"
                             />
-                            <p class="subtitle margin-auto">UI shows up for when units are selected</p>
+                            <p class="subtitle center-text margin-auto">UI shows up for when units are selected</p>
                         </div>
                     </div>
                     <br />
@@ -497,7 +497,7 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                             alt="an example of what perlin noise looks like"
                         />
                         <img
-                            src="./ProjectContent/CornerKingdoms/perlinNoiseTrees.png"
+                            src="./ProjectContent/CornerKingdoms/perlinNoiseTrees.jpg"
                             alt="an example of how perlin noise was used to create tree placement patterns"
                         />
                     </div>
@@ -800,7 +800,7 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                         </div>
                         <video
                             class="itd-how-to-use-media split-child-50"
-                            data-src="./ProjectContent/ImagetoDots/uploadpicture.mp4"
+                            data-src="./ProjectContent/ImagetoDots/uploadedpicture.mp4"
                             autoplay="autoplay"
                             loop="loop"
                             muted="muted"
@@ -818,7 +818,7 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                         </div>
                         <video
                             class="itd-how-to-use-media split-child-50"
-                            data-src="./ProjectContent/ImagetoDots/messwithsettings.mp4"
+                            data-src="./ProjectContent/ImagetoDots/messwithsettings-lowres.mp4"
                             autoplay="autoplay"
                             loop="loop"
                             muted="muted"
@@ -833,7 +833,7 @@ SetUnitPos(unitsToRally[i], dir, unitsToRally[i].GetStats.maxMoveSpeed);</code><
                         </div>
                         <video
                             class="itd-how-to-use-media split-child-50"
-                            data-src="./ProjectContent/ImagetoDots/savevideo.mp4"
+                            data-src="./ProjectContent/ImagetoDots/savevideo-lowres.mp4"
                             autoplay="autoplay"
                             loop="loop"
                             muted="muted"
@@ -1083,7 +1083,8 @@ const debugSettings = new Debug_Settings();</code></pre>
                 <br />
                 <div>
                     <video
-                        data-src="./ProjectContent/ImagetoDots/SpatialGridDotsExample.mp4"
+                        class="spatial-grid-video"
+                        data-src="./ProjectContent/ImagetoDots/SpatialGridDotsExample-lowres.mp4"
                         autoplay="autoplay"
                         loop="loop"
                         muted="muted"
@@ -1109,7 +1110,7 @@ const debugSettings = new Debug_Settings();</code></pre>
                 </p>
                 <br />
                 <br />
-                <div class="split-section break-early">
+                <div class="split-section align-center break-early">
                     <div>
                         <p>
                             Using a <em>cell size</em> constant, I can create a grid of cells. This
@@ -1134,7 +1135,7 @@ const debugSettings = new Debug_Settings();</code></pre>
                 </div>
                 <br />
                 <br />
-                <div class="split-section-reverse break-early">
+                <div class="split-section-reverse align-center break-early">
                     <p>
                         I can get the neighboring cells by adding or subtracting 1 from the x and y values. This way, I
                         can get the 8 cells surrounding the current cell.
@@ -1160,7 +1161,7 @@ const debugSettings = new Debug_Settings();</code></pre>
                 </div>
                 <br />
                 <br />
-                <div class="split-section break-early">
+                <div class="split-section align-center break-early">
                     <p>Using that information, I can get all the dots in the neighboring cells.</p>
                     <pre><code class="language-javascript">function GetDotsInNeighboringCells(dot) {
     const { gridPosition } = dot;
